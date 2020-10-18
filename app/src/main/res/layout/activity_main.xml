@@ -6,6 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <RelativeLayout
         android:id="@+id/layout1"
         android:layout_width="0dp"
@@ -15,7 +33,7 @@
         app:layout_constraintBottom_toTopOf="@id/layout3"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/layout2"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout" >
 
         <Button
             android:id="@+id/button1"
@@ -31,7 +49,7 @@
             android:layout_alignStart="@id/button1"
             android:clickable="false"
             android:gravity="center"
-            android:text="@string/lorem_ipsum" />
+            android:text="Temp to Shopping Lists" />
 
     </RelativeLayout>
 
@@ -44,7 +62,7 @@
         app:layout_constraintBottom_toTopOf="@id/layout3"
         app:layout_constraintLeft_toRightOf="@id/layout1"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout" >
 
         <Button
             android:id="@+id/button2"

@@ -3,18 +3,26 @@ package com.example.smartfridge
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import androidx.fragment.app.DialogFragment
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var mDialog: DialogFragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(findViewById(R.id.toolbar))
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         val button1 = findViewById<View>(R.id.button1) as Button
         button1.setOnClickListener {
-            val notImplementedIntent = Intent(this, NotImplementedActivity::class.java)
-            startActivity(notImplementedIntent)
+            val shoppingListsIntent = Intent(this, ShoppingListsActivity::class.java)
+            startActivity(shoppingListsIntent)
         }
 
         val button2 = findViewById<View>(R.id.button2) as Button
@@ -47,6 +55,25 @@ class MainActivity : AppCompatActivity() {
             val notImplementedIntent = Intent(this, NotImplementedActivity::class.java)
             startActivity(notImplementedIntent)
         }
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main_activity_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_more_information -> {
+                mDialog = DialogFragmentMainActivity.newInstance()
+                mDialog.show(supportFragmentManager, TAG)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    companion object {
+        private const val TAG = "SmartFridge:MainActivity"
     }
 }
