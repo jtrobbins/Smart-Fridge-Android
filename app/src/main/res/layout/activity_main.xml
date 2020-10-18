@@ -78,7 +78,7 @@
             android:layout_alignStart="@id/button2"
             android:clickable="false"
             android:gravity="center"
-            android:text="@string/lorem_ipsum" />
+            android:text="Temp to Recipes" />
 
     </RelativeLayout>
 

@@ -27,8 +27,8 @@ class MainActivity : AppCompatActivity() {
 
         val button2 = findViewById<View>(R.id.button2) as Button
         button2.setOnClickListener {
-            val notImplementedIntent = Intent(this, NotImplementedActivity::class.java)
-            startActivity(notImplementedIntent)
+            val recipesIntent = Intent(this, RecipesActivity::class.java)
+            startActivity(recipesIntent)
         }
 
         val button3 = findViewById<View>(R.id.button3) as Button

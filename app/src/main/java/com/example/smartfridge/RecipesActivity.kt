@@ -1,36 +1,28 @@
 package com.example.smartfridge
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class ShoppingListsActivity : AppCompatActivity() {
+class RecipesActivity : AppCompatActivity() {
 
     private lateinit var mDialog: DialogFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.shopping_lists)
+        setContentView(R.layout.recipes)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.title = "Shopping Lists"
+        supportActionBar?.title = "Recipes"
 
         toolbar.setNavigationOnClickListener {
             finish()
-        }
-
-        val fab = findViewById<FloatingActionButton>(R.id.fab)
-        fab.setOnClickListener {
-            val notImplementedIntent = Intent(this, NotImplementedActivity::class.java)
-            startActivity(notImplementedIntent)
         }
     }
 
@@ -42,7 +34,7 @@ class ShoppingListsActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_more_information -> {
-                mDialog = DialogFragmentShoppingListsActivity.newInstance()
+                mDialog = DialogFragmentRecipesActivity.newInstance()
                 mDialog.show(supportFragmentManager, TAG)
                 true
             }
@@ -51,6 +43,6 @@ class ShoppingListsActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val TAG = "SmartFridge:ShoppingListsActivity"
+        private const val TAG = "SmartFridge:RecipesActivity"
     }
 }
