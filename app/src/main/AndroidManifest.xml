@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".NotImplementedActivity" />
         <activity android:name=".ShoppingListsActivity" />
+        <activity android:name=".AddShoppingList" />
         <activity android:name=".RecipesActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
