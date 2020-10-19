@@ -27,6 +27,12 @@ class AddShoppingList : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.title = "Add Shopping List"
 
+        toolbar.setNavigationOnClickListener {
+            val data = Intent()
+            setResult(Activity.RESULT_CANCELED, data)
+            finish()
+        }
+
         var mTitleText = findViewById<View>(R.id.shopping_list_title) as EditText
         var mDescriptionText = findViewById<View>(R.id.shopping_list_description) as EditText
 
@@ -45,6 +51,15 @@ class AddShoppingList : AppCompatActivity() {
 
         val submitButton = findViewById<View>(R.id.submitButton) as Button
         submitButton.setOnClickListener {
+
+            val data = Intent()
+
+            data.putExtra("title", mTitleText.text.toString())
+            data.putExtra("description", mDescriptionText.text.toString())
+
+            setResult(Activity.RESULT_OK, data)
+            finish()
+
         }
 
     }

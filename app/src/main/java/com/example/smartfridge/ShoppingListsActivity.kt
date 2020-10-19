@@ -30,7 +30,7 @@ class ShoppingListsActivity : AppCompatActivity() {
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
             val addShoppingListIntent = Intent(this, AddShoppingList::class.java)
-            startActivity(addShoppingListIntent)
+            startActivityForResult(addShoppingListIntent, ADD_LIST_REQUEST)
         }
     }
 
@@ -52,5 +52,6 @@ class ShoppingListsActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "SmartFridge:ShoppingListsActivity"
+        private val ADD_LIST_REQUEST = 0
     }
 }
