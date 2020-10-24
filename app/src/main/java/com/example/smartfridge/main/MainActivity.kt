@@ -11,6 +11,8 @@ import androidx.fragment.app.DialogFragment
 import com.example.smartfridge.*
 import com.example.smartfridge.recipes.RecipesActivity
 import com.example.smartfridge.shoppinglists.ShoppingListsActivity
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 

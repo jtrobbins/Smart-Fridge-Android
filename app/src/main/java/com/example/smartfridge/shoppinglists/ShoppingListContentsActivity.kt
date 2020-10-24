@@ -1,12 +1,15 @@
 package com.example.smartfridge.shoppinglists
 
 import android.app.Activity
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.AdapterView
 import android.widget.ListView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
@@ -45,6 +48,34 @@ class ShoppingListContentsActivity : AppCompatActivity() {
             val addShoppingItemIntent = Intent(this, AddShoppingItem::class.java)
             startActivityForResult(addShoppingItemIntent, ADD_LIST_REQUEST)
         }
+
+        listViewLists.onItemLongClickListener = AdapterView.OnItemLongClickListener { _, _, item, _ ->
+            deleteDialog(item)
+            true
+        }
+    }
+
+    private fun deleteDialog(item: Int) {
+
+        val dialogBuilder = AlertDialog.Builder(this)
+        val listId = intent.getIntExtra("ID", 0)
+
+        dialogBuilder.setMessage("Do you want to delete?")
+
+            .setPositiveButton("Delete", DialogInterface.OnClickListener {
+                    dialog, _ -> shoppingItemViewModel.deleteItems(listId, item)
+                val titleAdapter = ItemList(this, shoppingItemViewModel.getItems(listId))
+                listViewLists.adapter = titleAdapter
+                dialog.dismiss()
+            })
+
+            .setNegativeButton("Cancel", DialogInterface.OnClickListener {
+                    dialog, _ -> dialog.cancel()
+            })
+
+        val alert = dialogBuilder.create()
+        alert.setTitle("Delete")
+        alert.show()
     }
 
     override fun onStart() {
