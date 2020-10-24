@@ -7,8 +7,8 @@ class ShoppingListViewModel : ViewModel() {
 
     private var lists : MutableList<ShoppingList> = ArrayList()
 
-    fun addLists(name: String, description: String) {
-        lists.add(ShoppingList(name, description))
+    fun addLists(name: String, date: String) {
+        lists.add(ShoppingList(name, date))
     }
 
     fun getLists(): MutableList<ShoppingList> {

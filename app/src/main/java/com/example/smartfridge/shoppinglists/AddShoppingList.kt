@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
 import com.example.smartfridge.R
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AddShoppingList : AppCompatActivity() {
 
@@ -34,7 +36,6 @@ class AddShoppingList : AppCompatActivity() {
         }
 
         var mTitleText = findViewById<View>(R.id.shopping_list_title) as EditText
-        var mDescriptionText = findViewById<View>(R.id.shopping_list_description) as EditText
 
         val cancelButton = findViewById<View>(R.id.cancelButton) as Button
         cancelButton.setOnClickListener {
@@ -46,7 +47,6 @@ class AddShoppingList : AppCompatActivity() {
         val resetButton = findViewById<View>(R.id.resetButton) as Button
         resetButton.setOnClickListener {
             mTitleText.setText("")
-            mDescriptionText.setText("")
         }
 
         val submitButton = findViewById<View>(R.id.submitButton) as Button
@@ -54,8 +54,11 @@ class AddShoppingList : AppCompatActivity() {
 
             val data = Intent()
 
+            val cal = Calendar.getInstance()
+            val date = SimpleDateFormat("MMM d, yyyy").format(cal.time)
+
             data.putExtra("title", mTitleText.text.toString())
-            data.putExtra("description", mDescriptionText.text.toString())
+            data.putExtra("date", date)
 
             setResult(Activity.RESULT_OK, data)
             finish()

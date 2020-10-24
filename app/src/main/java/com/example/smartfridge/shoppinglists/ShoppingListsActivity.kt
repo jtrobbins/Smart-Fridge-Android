@@ -15,6 +15,8 @@ import com.example.smartfridge.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.lifecycle.ViewModelProviders
 import com.example.smartfridge.main.NotImplementedActivity
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ShoppingListsActivity : AppCompatActivity() {
 
@@ -66,8 +68,11 @@ class ShoppingListsActivity : AppCompatActivity() {
     }
 
     private fun generateSample() {
-        shoppingListViewModel.addLists("Mary's Birthday!", "Don't forget it's November 15th!!")
-        shoppingListViewModel.addLists("Grocery List", "Lorem Ipsum")
+        val cal = Calendar.getInstance()
+        val date = SimpleDateFormat("MMM d, yyyy").format(cal.time)
+
+        shoppingListViewModel.addLists("Mary's Birthday!", date)
+        shoppingListViewModel.addLists("Grocery List", date)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -75,7 +80,7 @@ class ShoppingListsActivity : AppCompatActivity() {
 
         if (requestCode == ADD_LIST_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
             data.getStringExtra("title")?.let {
-                shoppingListViewModel.addLists(it, data.getStringExtra("description")!!)
+                shoppingListViewModel.addLists(it, data.getStringExtra("date")!!)
             }
         }
 

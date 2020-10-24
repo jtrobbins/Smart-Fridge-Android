@@ -26,8 +26,7 @@ class TitleList(private val context: Activity, private var shoppingLists: List<S
 
         val listItem = shoppingLists[position]
 
-        val cal = Calendar.getInstance()
-        val date = "Created: " + SimpleDateFormat("MMM d, yyyy").format(cal.time)
+        val date = "Created: " +  listItem.listDate
         val numItems = listItem.listItems.size.toString() + " items"
 
         textViewName.text = listItem.listName
