@@ -71,7 +71,16 @@ class ShoppingListsActivity : AppCompatActivity() {
         val date = SimpleDateFormat("MMM d, yyyy").format(cal.time)
 
         shoppingListViewModel.addLists("Mary's Birthday!", date)
+        shoppingListViewModel.addItems(0, "Cake", "1")
+        shoppingListViewModel.addItems(0, "Coke", "2")
+        shoppingListViewModel.addItems(0, "Pizza", "3")
+
         shoppingListViewModel.addLists("Grocery List", date)
+        shoppingListViewModel.addItems(1, "Eggs", "12")
+        shoppingListViewModel.addItems(1, "Bread", "1")
+        shoppingListViewModel.addItems(1, "Milk", "1")
+        shoppingListViewModel.addItems(1, "Apples", "8")
+        shoppingListViewModel.addItems(1, "Turkey", "1")
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
