@@ -1,16 +1,16 @@
-package com.example.smartfridge
+package com.example.smartfridge.shoppinglists
 
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 
-class DialogFragmentMainActivity : DialogFragment() {
+class DialogFragmentAddShoppingList : DialogFragment() {
 
     companion object {
 
-        fun newInstance(): DialogFragmentMainActivity {
-            return DialogFragmentMainActivity()
+        fun newInstance(): DialogFragmentAddShoppingList {
+            return DialogFragmentAddShoppingList()
         }
     }
 

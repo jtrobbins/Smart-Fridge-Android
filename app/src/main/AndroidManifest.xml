@@ -9,11 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".NotImplementedActivity" />
-        <activity android:name=".ShoppingListsActivity" />
-        <activity android:name=".AddShoppingList" />
-        <activity android:name=".RecipesActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".main.NotImplementedActivity" />
+        <activity android:name=".shoppinglists.ShoppingListsActivity" />
+        <activity android:name=".shoppinglists.AddShoppingList" />
+        <activity android:name=".recipes.RecipesActivity" />
+        <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

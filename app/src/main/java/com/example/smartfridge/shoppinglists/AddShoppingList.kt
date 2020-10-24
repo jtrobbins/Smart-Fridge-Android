@@ -1,9 +1,8 @@
-package com.example.smartfridge
+package com.example.smartfridge.shoppinglists
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -12,6 +11,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
+import com.example.smartfridge.R
 
 class AddShoppingList : AppCompatActivity() {
 
@@ -73,8 +73,11 @@ class AddShoppingList : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_more_information -> {
-                mDialog = DialogFragmentAddShoppingList.newInstance()
-                mDialog.show(supportFragmentManager, TAG)
+                mDialog =
+                    DialogFragmentAddShoppingList.newInstance()
+                mDialog.show(supportFragmentManager,
+                    TAG
+                )
                 true
             }
             else -> super.onOptionsItemSelected(item)

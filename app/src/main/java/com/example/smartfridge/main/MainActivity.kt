@@ -1,4 +1,4 @@
-package com.example.smartfridge
+package com.example.smartfridge.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,9 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import androidx.fragment.app.DialogFragment
+import com.example.smartfridge.*
+import com.example.smartfridge.recipes.RecipesActivity
+import com.example.smartfridge.shoppinglists.ShoppingListsActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -66,8 +69,11 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_more_information -> {
-                mDialog = DialogFragmentMainActivity.newInstance()
-                mDialog.show(supportFragmentManager, TAG)
+                mDialog =
+                    DialogFragmentMainActivity.newInstance()
+                mDialog.show(supportFragmentManager,
+                    TAG
+                )
                 true
             }
             else -> super.onOptionsItemSelected(item)

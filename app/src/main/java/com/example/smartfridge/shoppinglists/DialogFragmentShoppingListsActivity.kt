@@ -1,4 +1,4 @@
-package com.example.smartfridge
+package com.example.smartfridge.shoppinglists
 
 import android.app.AlertDialog
 import android.app.Dialog
