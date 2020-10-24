@@ -12,6 +12,8 @@
         <activity android:name=".main.NotImplementedActivity" />
         <activity android:name=".shoppinglists.ShoppingListsActivity" />
         <activity android:name=".shoppinglists.AddShoppingList" />
+        <activity android:name=".shoppinglists.ShoppingListContentsActivity" />
+        <activity android:name=".shoppinglists.AddShoppingItem" />
         <activity android:name=".recipes.RecipesActivity" />
         <activity android:name=".main.MainActivity">
             <intent-filter>

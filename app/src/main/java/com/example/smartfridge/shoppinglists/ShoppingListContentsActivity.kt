@@ -6,80 +6,63 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.AdapterView
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProviders
 import com.example.smartfridge.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import androidx.lifecycle.ViewModelProviders
-import com.example.smartfridge.main.NotImplementedActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ShoppingListsActivity : AppCompatActivity() {
+class ShoppingListContentsActivity : AppCompatActivity() {
 
     private lateinit var mDialog: DialogFragment
     private lateinit var listViewLists: ListView
-    private lateinit var shoppingListViewModel: ShoppingListViewModel
+    private lateinit var shoppingItemViewModel: ShoppingListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.shopping_lists)
+        setContentView(R.layout.shopping_lists_contents)
 
-        shoppingListViewModel = ViewModelProviders.of(this, ShoppingListViewModelFactory.getInstance()).get(ShoppingListViewModel::class.java)
+        shoppingItemViewModel = ViewModelProviders.of(this, ShoppingListViewModelFactory.getInstance()).get(ShoppingListViewModel::class.java)
 
-        listViewLists = findViewById(R.id.listViewTitles)
+        listViewLists = findViewById(R.id.listViewItems)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.title = "Shopping Lists"
+        supportActionBar?.title = "List Items"
 
         toolbar.setNavigationOnClickListener {
             finish()
         }
 
-        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        val fab = findViewById<FloatingActionButton>(R.id.fab2)
         fab.setOnClickListener {
-            val addShoppingListIntent = Intent(this, AddShoppingList::class.java)
-            startActivityForResult(addShoppingListIntent, ADD_LIST_REQUEST)
+            val addShoppingItemIntent = Intent(this, AddShoppingItem::class.java)
+            startActivityForResult(addShoppingItemIntent, ADD_LIST_REQUEST)
         }
-
-        listViewLists.onItemClickListener = AdapterView.OnItemClickListener { _, _, item, _ ->
-
-            val shoppingListContentsIntent = Intent(applicationContext, ShoppingListContentsActivity::class.java)
-            shoppingListContentsIntent.putExtra("ID", item)
-            startActivity(shoppingListContentsIntent)
-        }
-
-        generateSample()
     }
 
     override fun onStart() {
         super.onStart()
 
-        val titleAdapter = TitleList(this, shoppingListViewModel.getLists())
-
-        listViewLists.adapter = titleAdapter
-    }
-
-    private fun generateSample() {
-        val cal = Calendar.getInstance()
-        val date = SimpleDateFormat("MMM d, yyyy").format(cal.time)
-
-        shoppingListViewModel.addLists("Mary's Birthday!", date)
-        shoppingListViewModel.addLists("Grocery List", date)
+        val listId = intent.getIntExtra("ID", 0)
+        val itemAdapter = ItemList(this, shoppingItemViewModel.getItems(listId))
+        listViewLists.adapter = itemAdapter
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == ADD_LIST_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
-            data.getStringExtra("title")?.let {
-                shoppingListViewModel.addLists(it, data.getStringExtra("date")!!)
+            val listId = intent.getIntExtra("ID", 0)
+            data.getStringExtra("name")?.let {
+                shoppingItemViewModel.addItems(listId, it, data.getStringExtra("quantity")!!
+                )
             }
         }
 
@@ -94,10 +77,8 @@ class ShoppingListsActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.action_more_information -> {
                 mDialog =
-                    DialogFragmentShoppingListsActivity.newInstance()
-                mDialog.show(supportFragmentManager,
-                    TAG
-                )
+                    DialogFragmentShoppingListContentsActivity.newInstance()
+                mDialog.show(supportFragmentManager,TAG)
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -105,7 +86,7 @@ class ShoppingListsActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val TAG = "SmartFridge:ShoppingListsActivity"
+        private const val TAG = "SmartFridge:ShoppingListContentsActivity"
         private val ADD_LIST_REQUEST = 0
     }
 }

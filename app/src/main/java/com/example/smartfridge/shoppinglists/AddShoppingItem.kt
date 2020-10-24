@@ -15,19 +15,19 @@ import com.example.smartfridge.R
 import java.text.SimpleDateFormat
 import java.util.*
 
-class AddShoppingList : AppCompatActivity() {
+class AddShoppingItem : AppCompatActivity() {
 
     private lateinit var mDialog: DialogFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.add_shopping_list)
+        setContentView(R.layout.add_shopping_item)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.title = "Add Shopping List"
+        supportActionBar?.title = "Add Item"
 
         toolbar.setNavigationOnClickListener {
             val data = Intent()
@@ -35,7 +35,8 @@ class AddShoppingList : AppCompatActivity() {
             finish()
         }
 
-        var mTitleText = findViewById<View>(R.id.shopping_list_title) as EditText
+        var mNameText = findViewById<View>(R.id.shopping_item_title) as EditText
+        var mQuantityText = findViewById<View>(R.id.shopping_item_quantity) as EditText
 
         val cancelButton = findViewById<View>(R.id.cancelButton) as Button
         cancelButton.setOnClickListener {
@@ -46,13 +47,14 @@ class AddShoppingList : AppCompatActivity() {
 
         val resetButton = findViewById<View>(R.id.resetButton) as Button
         resetButton.setOnClickListener {
-            mTitleText.setText("")
+            mNameText.setText("")
+            mQuantityText.setText("")
         }
 
         val submitButton = findViewById<View>(R.id.submitButton) as Button
         submitButton.setOnClickListener {
 
-            if (mTitleText.text.toString() == "") {
+            if (mNameText.text.toString() == "" || mQuantityText.text.toString() == "") {
                 val data = Intent()
                 setResult(Activity.RESULT_CANCELED, data)
                 finish()
@@ -60,11 +62,8 @@ class AddShoppingList : AppCompatActivity() {
 
             val data = Intent()
 
-            val cal = Calendar.getInstance()
-            val date = SimpleDateFormat("MMM d, yyyy").format(cal.time)
-
-            data.putExtra("title", mTitleText.text.toString())
-            data.putExtra("date", date)
+            data.putExtra("name", mNameText.text.toString())
+            data.putExtra("quantity", mQuantityText.text.toString())
 
             setResult(Activity.RESULT_OK, data)
             finish()
@@ -83,7 +82,7 @@ class AddShoppingList : AppCompatActivity() {
         return when (item.itemId) {
             R.id.action_more_information -> {
                 mDialog =
-                    DialogFragmentAddShoppingList.newInstance()
+                    DialogFragmentAddShoppingItem.newInstance()
                 mDialog.show(supportFragmentManager,
                     TAG
                 )
@@ -96,4 +95,5 @@ class AddShoppingList : AppCompatActivity() {
     companion object {
         private const val TAG = "SmartFridge:ShoppingListsActivity"
     }
+
 }

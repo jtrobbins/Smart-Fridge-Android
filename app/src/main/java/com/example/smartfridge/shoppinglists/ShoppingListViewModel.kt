@@ -14,4 +14,20 @@ class ShoppingListViewModel : ViewModel() {
     fun getLists(): MutableList<ShoppingList> {
         return lists
     }
+
+    fun addItems(index: Int, name: String, quantity: String) {
+        lists[index].listItems.add(Item(name, quantity))
+    }
+
+    fun getItems(index: Int): MutableList<Item> {
+        return lists[index].listItems
+    }
+
+    companion object {
+        private var instance : ShoppingListViewModel? = null
+        fun getInstance() =
+            instance ?: synchronized(ShoppingListViewModel::class.java){
+                instance ?: ShoppingListViewModel().also { instance = it }
+            }
+    }
 }
