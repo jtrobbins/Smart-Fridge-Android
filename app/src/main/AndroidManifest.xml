@@ -15,6 +15,11 @@
         <activity android:name=".shoppinglists.ShoppingListContentsActivity" />
         <activity android:name=".shoppinglists.AddShoppingItem" />
         <activity android:name=".recipes.RecipesActivity" />
+        <activity android:name=".recipes.CoconutCakeActivity" />
+        <activity android:name=".recipes.HomemadeLasagnaActivity" />
+        <activity android:name=".recipes.StuffedBellPeppersActivity" />
+        <activity android:name=".recipes.FrenchToastActivity" />
+        <activity android:name=".recipes.BroccoliSaladActivity" />
         <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

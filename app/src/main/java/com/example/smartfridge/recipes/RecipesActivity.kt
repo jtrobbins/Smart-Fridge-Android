@@ -14,8 +14,6 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
 import com.example.smartfridge.R
 import com.example.smartfridge.main.NotImplementedActivity
-import com.example.smartfridge.shoppinglists.AddShoppingList
-import com.example.smartfridge.shoppinglists.ShoppingListsActivity
 
 
 class RecipesActivity : AppCompatActivity() {
@@ -37,23 +35,23 @@ class RecipesActivity : AppCompatActivity() {
             if ((event != null && (event.keyCode == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
 
                 if (searchView.text.toString() == "Coconut Cake") {
-                    val coconutCakeIntent = Intent(this, NotImplementedActivity::class.java)
+                    val coconutCakeIntent = Intent(this, CoconutCakeActivity::class.java)
                     startActivity(coconutCakeIntent)
 
                 } else if (searchView.text.toString() == "Homemade Lasagna") {
-                    val homemadeLasagnaIntent = Intent(this, NotImplementedActivity::class.java)
+                    val homemadeLasagnaIntent = Intent(this, HomemadeLasagnaActivity::class.java)
                     startActivity(homemadeLasagnaIntent)
 
                 } else if (searchView.text.toString() == "Stuffed Bell Peppers") {
-                    val stuffedBellPeppersIntent = Intent(this, NotImplementedActivity::class.java)
+                    val stuffedBellPeppersIntent = Intent(this, StuffedBellPeppersActivity::class.java)
                     startActivity(stuffedBellPeppersIntent)
 
                 } else if (searchView.text.toString() == "French Toast") {
-                    val frenchToastIntent = Intent(this, NotImplementedActivity::class.java)
+                    val frenchToastIntent = Intent(this, FrenchToastActivity::class.java)
                     startActivity(frenchToastIntent)
 
                 } else if (searchView.text.toString() == "Broccoli Salad") {
-                    val broccoliSaladIntent = Intent(this, NotImplementedActivity::class.java)
+                    val broccoliSaladIntent = Intent(this, BroccoliSaladActivity::class.java)
                     startActivity(broccoliSaladIntent)
                 }
             }
