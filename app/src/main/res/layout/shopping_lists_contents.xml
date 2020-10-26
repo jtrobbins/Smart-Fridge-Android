@@ -24,13 +24,23 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <ImageView
+        android:id="@+id/listContentsListImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:layout_marginTop="4dp"
+        android:padding="8dp"
+        android:src="@drawable/circle"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/appBarLayout"/>
+
     <TextView
         android:id="@+id/textViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/appBarLayout"
+        android:layout_below="@id/listContentsListImage"
         android:layout_centerHorizontal="true"
-        android:paddingTop="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:text="Title"
@@ -43,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewTitle"
         android:text="Press and hold a item to delete"
-        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingTop="8dp"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingBottom="@dimen/activity_vertical_margin"
