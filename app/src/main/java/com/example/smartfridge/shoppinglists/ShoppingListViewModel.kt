@@ -31,6 +31,10 @@ class ShoppingListViewModel : ViewModel() {
         return lists[index].listItems
     }
 
+    fun getListName(index: Int): String {
+        return lists[index].listName
+    }
+
     companion object {
         private var instance : ShoppingListViewModel? = null
         fun getInstance() =

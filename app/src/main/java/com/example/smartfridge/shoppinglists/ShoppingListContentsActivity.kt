@@ -9,6 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.AdapterView
 import android.widget.ListView
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -23,6 +24,7 @@ class ShoppingListContentsActivity : AppCompatActivity() {
 
     private lateinit var mDialog: DialogFragment
     private lateinit var listViewLists: ListView
+    private lateinit var titleView: TextView
     private lateinit var shoppingItemViewModel: ShoppingListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,12 +34,15 @@ class ShoppingListContentsActivity : AppCompatActivity() {
         shoppingItemViewModel = ViewModelProviders.of(this, ShoppingListViewModelFactory.getInstance()).get(ShoppingListViewModel::class.java)
 
         listViewLists = findViewById(R.id.listViewItems)
+        titleView = findViewById(R.id.textViewTitle)
+
+        titleView.text = shoppingItemViewModel.getListName(intent.getIntExtra("ID", 0))
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.title = "List Items"
+        supportActionBar?.title = ""
 
         toolbar.setNavigationOnClickListener {
             finish()
