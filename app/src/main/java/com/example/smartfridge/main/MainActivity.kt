@@ -6,13 +6,11 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
+import android.widget.ImageButton
 import androidx.fragment.app.DialogFragment
 import com.example.smartfridge.*
 import com.example.smartfridge.recipes.RecipesActivity
 import com.example.smartfridge.shoppinglists.ShoppingListsActivity
-import java.text.SimpleDateFormat
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,40 +21,40 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         setSupportActionBar(findViewById(R.id.toolbar))
-        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.title = "Smart Fridge"
 
-        val button1 = findViewById<View>(R.id.button1) as Button
+        val button1 = findViewById<View>(R.id.button1) as ImageButton
         button1.setOnClickListener {
-            val shoppingListsIntent = Intent(this, ShoppingListsActivity::class.java)
-            startActivity(shoppingListsIntent)
-        }
-
-        val button2 = findViewById<View>(R.id.button2) as Button
-        button2.setOnClickListener {
-            val recipesIntent = Intent(this, RecipesActivity::class.java)
-            startActivity(recipesIntent)
-        }
-
-        val button3 = findViewById<View>(R.id.button3) as Button
-        button3.setOnClickListener {
             val notImplementedIntent = Intent(this, NotImplementedActivity::class.java)
             startActivity(notImplementedIntent)
         }
 
-        val button4 = findViewById<View>(R.id.button4) as Button
+        val button2 = findViewById<View>(R.id.button2) as ImageButton
+        button2.setOnClickListener {
+            val shoppingListsIntent = Intent(this, ShoppingListsActivity::class.java)
+            startActivity(shoppingListsIntent)
+        }
+
+        val button3 = findViewById<View>(R.id.button3) as ImageButton
+        button3.setOnClickListener {
+            val recipesIntent = Intent(this, RecipesActivity::class.java)
+            startActivity(recipesIntent)
+        }
+
+        val button4 = findViewById<View>(R.id.button4) as ImageButton
         button4.setOnClickListener {
             val notImplementedIntent = Intent(this, NotImplementedActivity::class.java)
             startActivity(notImplementedIntent)
 
         }
 
-        val button5 = findViewById<View>(R.id.button5) as Button
+        val button5 = findViewById<View>(R.id.button5) as ImageButton
         button5.setOnClickListener {
             val notImplementedIntent = Intent(this, NotImplementedActivity::class.java)
             startActivity(notImplementedIntent)
         }
 
-        val button6 = findViewById<View>(R.id.button6) as Button
+        val button6 = findViewById<View>(R.id.button6) as ImageButton
         button6.setOnClickListener {
             val notImplementedIntent = Intent(this, NotImplementedActivity::class.java)
             startActivity(notImplementedIntent)
