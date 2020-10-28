@@ -24,15 +24,24 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <ImageView
+        android:id="@+id/shopping_list_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/appBarLayout"
+        android:src="@drawable/ic_shopping_list_icon"
+        app:tint="#3498db"
+        android:contentDescription="shopping lists icon" />
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/appBarLayout"
+        android:layout_below="@id/shopping_list_icon"
         android:text="Tap to view the contents of a list"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
         android:textAlignment="center" />
 
     <TextView

@@ -23,14 +23,25 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <ImageView
+        android:id="@+id/recipes_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/appBarLayout"
+        android:src="@drawable/ic_recipe_icon"
+        app:tint="#3498db"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="shopping lists icon" />
+
+    <ImageView
         android:id="@+id/searchImage"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:src="@drawable/ic_baseline_search_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintTop_toBottomOf="@+id/recipes_icon"
         app:layout_constraintBottom_toBottomOf="@+id/autocomplete_recipe"
         app:layout_constraintEnd_toStartOf="@+id/autocomplete_recipe"/>
 
@@ -38,13 +49,12 @@
         android:id="@+id/autocomplete_recipe"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:hint="Search Recipes"
         android:inputType="text"
         android:completionThreshold="0"
         app:layout_constraintStart_toEndOf="@+id/searchImage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBarLayout"/>
+        app:layout_constraintTop_toBottomOf="@id/recipes_icon"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,7 +42,7 @@ class ShoppingListContentsActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.title = ""
+        supportActionBar?.title = "Shopping List Contents"
 
         toolbar.setNavigationOnClickListener {
             finish()
