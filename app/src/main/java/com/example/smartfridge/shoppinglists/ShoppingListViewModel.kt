@@ -19,6 +19,11 @@ class ShoppingListViewModel : ViewModel() {
         return lists
     }
 
+    fun deleteAllLists(): MutableList<ShoppingList> {
+        lists.clear()
+        return lists
+    }
+
     fun addItems(index: Int, name: String, quantity: String) {
         lists[index].listItems.add(Item(name, quantity))
     }
@@ -28,6 +33,11 @@ class ShoppingListViewModel : ViewModel() {
     }
 
     fun getItems(index: Int): MutableList<Item> {
+        return lists[index].listItems
+    }
+
+    fun deleteAlItems(index: Int): MutableList<Item> {
+        lists[index].listItems.clear()
         return lists[index].listItems
     }
 

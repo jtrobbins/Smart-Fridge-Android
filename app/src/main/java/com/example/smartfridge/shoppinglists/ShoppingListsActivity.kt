@@ -127,7 +127,7 @@ class ShoppingListsActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.main_activity_menu, menu)
+        menuInflater.inflate(R.menu.shopping_lists_menu, menu)
         return true
     }
 
@@ -139,6 +139,12 @@ class ShoppingListsActivity : AppCompatActivity() {
                 mDialog.show(supportFragmentManager,
                     TAG
                 )
+                true
+            }
+            R.id.delete_all_lists -> {
+                val titleAdapter = TitleList(this,  shoppingListViewModel.deleteAllLists())
+
+                listViewLists.adapter = titleAdapter
                 true
             }
             else -> super.onOptionsItemSelected(item)

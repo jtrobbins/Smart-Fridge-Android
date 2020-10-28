@@ -24,7 +24,6 @@ class ShoppingListContentsActivity : AppCompatActivity() {
 
     private lateinit var mDialog: DialogFragment
     private lateinit var listViewLists: ListView
-    private lateinit var titleView: TextView
     private lateinit var shoppingItemViewModel: ShoppingListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,15 +33,12 @@ class ShoppingListContentsActivity : AppCompatActivity() {
         shoppingItemViewModel = ViewModelProviders.of(this, ShoppingListViewModelFactory.getInstance()).get(ShoppingListViewModel::class.java)
 
         listViewLists = findViewById(R.id.listViewItems)
-        titleView = findViewById(R.id.textViewTitle)
-
-        titleView.text = shoppingItemViewModel.getListName(intent.getIntExtra("ID", 0))
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.title = "Shopping List Contents"
+        supportActionBar?.title = shoppingItemViewModel.getListName(intent.getIntExtra("ID", 0))
 
         toolbar.setNavigationOnClickListener {
             finish()
@@ -105,7 +101,7 @@ class ShoppingListContentsActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.main_activity_menu, menu)
+        menuInflater.inflate(R.menu.shopping_lists_items_menu, menu)
         return true
     }
 
@@ -115,6 +111,12 @@ class ShoppingListContentsActivity : AppCompatActivity() {
                 mDialog =
                     DialogFragmentShoppingListContentsActivity.newInstance()
                 mDialog.show(supportFragmentManager,TAG)
+                true
+            }
+            R.id.delete_all_items -> {
+                val listId = intent.getIntExtra("ID", 0)
+                val itemAdapter = ItemList(this, shoppingItemViewModel.deleteAlItems(listId))
+                listViewLists.adapter = itemAdapter
                 true
             }
             else -> super.onOptionsItemSelected(item)
