@@ -49,6 +49,14 @@ class ShoppingListViewModel : ViewModel() {
         lists[index].listName = name
     }
 
+    fun getQuantity(index: Int, item: Int): String  {
+        return lists[index].listItems[item].itemQuantity
+    }
+
+    fun editQuantity(index: Int, item: Int, quantity: String)  {
+        lists[index].listItems[item].itemQuantity = quantity
+    }
+
     companion object {
         private var instance : ShoppingListViewModel? = null
         fun getInstance() =

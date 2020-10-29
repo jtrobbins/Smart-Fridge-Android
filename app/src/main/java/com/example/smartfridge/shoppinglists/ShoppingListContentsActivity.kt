@@ -3,20 +3,21 @@ package com.example.smartfridge.shoppinglists
 import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.res.Resources
 import android.os.Bundle
-import android.util.Log
+import android.text.InputType.TYPE_CLASS_NUMBER
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.AdapterView
-import android.widget.EditText
-import android.widget.ListView
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.marginLeft
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.smartfridge.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+
 
 class ShoppingListContentsActivity : AppCompatActivity() {
 
@@ -48,10 +49,42 @@ class ShoppingListContentsActivity : AppCompatActivity() {
             startActivityForResult(addShoppingItemIntent, ADD_LIST_REQUEST)
         }
 
+        listViewLists.onItemClickListener = AdapterView.OnItemClickListener { _, _, item, _ ->
+            updateQuantityDialog(item)
+        }
+
         listViewLists.onItemLongClickListener = AdapterView.OnItemLongClickListener { _, _, item, _ ->
             deleteDialog(item)
             true
         }
+    }
+
+    private fun updateQuantityDialog(item: Int) {
+
+        val editTextView = EditText(this)
+        val listId = intent.getIntExtra("ID", 0)
+        editTextView.setText(shoppingItemViewModel.getQuantity(listId, item))
+        editTextView.hint = "Enter Quantity"
+        editTextView.inputType = TYPE_CLASS_NUMBER
+
+        val dialogBuilder = AlertDialog.Builder(this)
+            .setEditText(editTextView)
+            .setPositiveButton("Edit", DialogInterface.OnClickListener {
+                    dialog, _ ->
+                shoppingItemViewModel.editQuantity(listId, item, editTextView.text.toString())
+                val titleAdapter = ItemList(this, shoppingItemViewModel.getItems(listId))
+                listViewLists.adapter = titleAdapter
+                dialog.dismiss()
+            })
+
+            .setNegativeButton("Cancel", DialogInterface.OnClickListener {
+                    dialog, _ -> dialog.cancel()
+            })
+
+        val alert = dialogBuilder.create()
+        alert.setTitle("Edit Quantity")
+        alert.show()
+
     }
 
     private fun deleteDialog(item: Int) {
@@ -84,7 +117,7 @@ class ShoppingListContentsActivity : AppCompatActivity() {
         editTextView.hint = "Enter Title"
 
         val dialogBuilder = AlertDialog.Builder(this)
-            .setView(editTextView)
+            .setEditText(editTextView)
             .setPositiveButton("Edit", DialogInterface.OnClickListener {
                     dialog, _ ->
                 shoppingItemViewModel.editListName(item, editTextView.text.toString())
@@ -148,6 +181,31 @@ class ShoppingListContentsActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    val Float.toPx: Int
+        get() = (this * Resources.getSystem().displayMetrics.density).toInt()
+
+    fun AlertDialog.Builder.setEditText(editText: EditText): AlertDialog.Builder {
+        val container = FrameLayout(context)
+        container.addView(editText)
+        val containerParams = FrameLayout.LayoutParams(
+            FrameLayout.LayoutParams.MATCH_PARENT,
+            FrameLayout.LayoutParams.WRAP_CONTENT
+        )
+        val marginHorizontal = 48F
+        val marginTop = 16F
+        containerParams.topMargin = (marginTop / 2).toPx
+        containerParams.leftMargin = marginHorizontal.toInt()
+        containerParams.rightMargin = marginHorizontal.toInt()
+        container.layoutParams = containerParams
+
+        val superContainer = FrameLayout(context)
+        superContainer.addView(container)
+
+        setView(superContainer)
+
+        return this
     }
 
     companion object {
