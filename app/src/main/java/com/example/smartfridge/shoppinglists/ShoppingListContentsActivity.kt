@@ -80,6 +80,8 @@ class ShoppingListContentsActivity : AppCompatActivity() {
     private fun editNameDialog(item: Int) {
 
         val editTextView = EditText(this)
+        editTextView.setText(shoppingItemViewModel.getListName(item))
+        editTextView.hint = "Enter Title"
 
         val dialogBuilder = AlertDialog.Builder(this)
             .setView(editTextView)
