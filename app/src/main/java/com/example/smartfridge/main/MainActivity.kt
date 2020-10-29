@@ -43,8 +43,8 @@ class MainActivity : AppCompatActivity() {
 
         val button1 = findViewById<View>(R.id.button1) as ImageButton
         button1.setOnClickListener {
-            val notImplementedIntent = Intent(this, NotImplementedActivity::class.java)
-            startActivity(notImplementedIntent)
+            val inventoryIntent = Intent(this, InventoryActivity::class.java)
+            startActivity(inventoryIntent)
         }
 
         val button2 = findViewById<View>(R.id.button2) as ImageButton
