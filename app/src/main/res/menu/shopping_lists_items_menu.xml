@@ -11,9 +11,15 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/edit_list_name"
+        android:orderInCategory="100"
+        android:title="Edit Name"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/delete_all_items"
         android:orderInCategory="100"
-        android:title="Delete All Items"
+        android:title="Delete All"
         app:showAsAction="never" />
 
 </menu>

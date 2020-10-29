@@ -8,8 +8,8 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.AdapterView
+import android.widget.EditText
 import android.widget.ListView
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -17,8 +17,6 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.smartfridge.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import java.text.SimpleDateFormat
-import java.util.*
 
 class ShoppingListContentsActivity : AppCompatActivity() {
 
@@ -79,6 +77,28 @@ class ShoppingListContentsActivity : AppCompatActivity() {
         alert.show()
     }
 
+    private fun editNameDialog(item: Int) {
+
+        val editTextView = EditText(this)
+
+        val dialogBuilder = AlertDialog.Builder(this)
+            .setView(editTextView)
+            .setPositiveButton("Edit", DialogInterface.OnClickListener {
+                    dialog, _ ->
+                shoppingItemViewModel.editListName(item, editTextView.text.toString())
+                supportActionBar?.title =  shoppingItemViewModel.getListName(item)
+                dialog.dismiss()
+            })
+
+            .setNegativeButton("Cancel", DialogInterface.OnClickListener {
+                    dialog, _ -> dialog.cancel()
+            })
+
+        val alert = dialogBuilder.create()
+        alert.setTitle("Edit Name")
+        alert.show()
+    }
+
     override fun onStart() {
         super.onStart()
 
@@ -115,8 +135,13 @@ class ShoppingListContentsActivity : AppCompatActivity() {
             }
             R.id.delete_all_items -> {
                 val listId = intent.getIntExtra("ID", 0)
-                val itemAdapter = ItemList(this, shoppingItemViewModel.deleteAlItems(listId))
+                val itemAdapter = ItemList(this, shoppingItemViewModel.deleteAllItems(listId))
                 listViewLists.adapter = itemAdapter
+                true
+            }
+            R.id.edit_list_name -> {
+                val listId = intent.getIntExtra("ID", 0)
+                editNameDialog(listId)
                 true
             }
             else -> super.onOptionsItemSelected(item)

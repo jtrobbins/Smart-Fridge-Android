@@ -36,13 +36,17 @@ class ShoppingListViewModel : ViewModel() {
         return lists[index].listItems
     }
 
-    fun deleteAlItems(index: Int): MutableList<Item> {
+    fun deleteAllItems(index: Int): MutableList<Item> {
         lists[index].listItems.clear()
         return lists[index].listItems
     }
 
     fun getListName(index: Int): String {
         return lists[index].listName
+    }
+
+    fun editListName(index: Int, name: String)  {
+        lists[index].listName = name
     }
 
     companion object {
