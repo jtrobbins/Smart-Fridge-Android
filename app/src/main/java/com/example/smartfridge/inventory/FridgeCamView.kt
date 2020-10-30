@@ -14,18 +14,18 @@ import androidx.fragment.app.DialogFragment
 import com.example.smartfridge.R
 import com.example.smartfridge.shoppinglists.DialogFragmentAddShoppingItem
 
-class AddInventoryItem : AppCompatActivity() {
+class FridgeCamView : AppCompatActivity() {
     private lateinit var mDialog: DialogFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.add_inventory_item)
+        setContentView(R.layout.fridge_cam_view)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.title = "Add Item"
+        supportActionBar?.title = "FridgeCam View"
 
         toolbar.setNavigationOnClickListener {
             val data = Intent()
@@ -33,41 +33,12 @@ class AddInventoryItem : AppCompatActivity() {
             finish()
         }
 
-        var mNameText = findViewById<View>(R.id.inventory_item_title) as EditText
-        var mQuantityText = findViewById<View>(R.id.inventory_item_quantity) as EditText
-        var mExpirationText = findViewById<View>(R.id.inventory_item_expiration) as EditText
-
-        val cancelButton = findViewById<View>(R.id.cancelButton) as Button
+        /*val cancelButton = findViewById<View>(R.id.cancelButton) as Button
         cancelButton.setOnClickListener {
             val data = Intent()
             setResult(Activity.RESULT_CANCELED, data)
             finish()
-        }
-
-        val resetButton = findViewById<View>(R.id.resetButton) as Button
-        resetButton.setOnClickListener {
-            mNameText.setText("")
-            mQuantityText.setText("")
-        }
-
-        val submitButton = findViewById<View>(R.id.submitButton) as Button
-        submitButton.setOnClickListener {
-
-            if (mNameText.text.toString() == "" || mQuantityText.text.toString() == "" || mExpirationText.text.toString() == "") {
-                val data = Intent()
-                setResult(Activity.RESULT_CANCELED, data)
-                finish()
-            }
-
-            val data = Intent()
-
-            data.putExtra("name", mNameText.text.toString())
-            data.putExtra("quantity", mQuantityText.text.toString())
-            data.putExtra("expiration", mExpirationText.text.toString())
-            setResult(Activity.RESULT_OK, data)
-            finish()
-
-        }
+        }*/
 
     }
 
@@ -92,6 +63,6 @@ class AddInventoryItem : AppCompatActivity() {
     }
 
     companion object {
-        private const val TAG = "SmartFridge:InventoryActivity"
+        private const val TAG = "SmartFridge:FridgeCamView"
     }
 }

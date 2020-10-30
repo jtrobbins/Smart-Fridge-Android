@@ -25,13 +25,13 @@ class InventoryActivity : AppCompatActivity() {
 
     private lateinit var mDialog: DialogFragment
     private lateinit var listViewLists: ListView
-    private lateinit var shoppingListViewModel: ShoppingListViewModel
+    private lateinit var inventoryListViewModel: InventoryListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.inventory)
 
-        shoppingListViewModel = ViewModelProviders.of(this, ShoppingListViewModelFactory.getInstance()).get(ShoppingListViewModel::class.java)
+        inventoryListViewModel = ViewModelProviders.of(this, InventoryListViewModelFactory.getInstance()).get(InventoryListViewModel::class.java)
 
         listViewLists = findViewById(R.id.listViewTitles)
 
@@ -39,7 +39,7 @@ class InventoryActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.title = "Shopping Lists"
+        supportActionBar?.title = "Fridge Inventory"
 
         toolbar.setNavigationOnClickListener {
             finish()
@@ -47,10 +47,15 @@ class InventoryActivity : AppCompatActivity() {
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
-            val addShoppingListIntent = Intent(this, AddInventoryItem::class.java)
-            startActivityForResult(addShoppingListIntent, ADD_LIST_REQUEST)
+            val addInventoryItemIntent = Intent(this, AddInventoryItem::class.java)
+            startActivityForResult(addInventoryItemIntent, ADD_ITEM_REQUEST)
         }
 
+        val fridgeCam = findViewById<ImageView>(R.id.cameraIcon)
+        fridgeCam.setOnClickListener {
+            val fridgeCamIntent = Intent(this, FridgeCamView::class.java)
+            startActivity(fridgeCamIntent)
+        }
         /*listViewLists.onItemClickListener = AdapterView.OnItemClickListener { _, _, item, _ ->
 
             val shoppingListContentsIntent = Intent(applicationContext, ShoppingListContentsActivity::class.java)
@@ -73,8 +78,8 @@ class InventoryActivity : AppCompatActivity() {
         dialogBuilder.setMessage("Do you want to delete?")
 
             .setPositiveButton("Delete", DialogInterface.OnClickListener {
-                dialog, _ -> shoppingListViewModel.deleteLists(item)
-                val titleAdapter = TitleList(this, shoppingListViewModel.getLists())
+                dialog, _ -> inventoryListViewModel.deleteItem(item)
+                val titleAdapter = TitleList(this, inventoryListViewModel.getItems())
                 listViewLists.adapter = titleAdapter
                 dialog.dismiss()
             })
@@ -89,28 +94,16 @@ class InventoryActivity : AppCompatActivity() {
     }
 
     private fun generateSample() {
-        if (shoppingListViewModel.getLists().size == 0) {
-            val cal = Calendar.getInstance()
-            val date = SimpleDateFormat("MMM d, yyyy").format(cal.time)
-
-            shoppingListViewModel.addLists("Mary's Birthday!", date)
-            shoppingListViewModel.addItems(0, "Cake", "1")
-            shoppingListViewModel.addItems(0, "Coke", "2")
-            shoppingListViewModel.addItems(0, "Pizza", "3")
-
-            shoppingListViewModel.addLists("Grocery List", date)
-            shoppingListViewModel.addItems(1, "Eggs", "12")
-            shoppingListViewModel.addItems(1, "Bread", "1")
-            shoppingListViewModel.addItems(1, "Milk", "1")
-            shoppingListViewModel.addItems(1, "Apples", "8")
-            shoppingListViewModel.addItems(1, "Turkey", "1")
+        if (inventoryListViewModel.getItems().size == 0) {
+            val date = "1/5/2020"
+            inventoryListViewModel.addItem("Frozen Pizza", "1 box", date)
         }
     }
 
     override fun onStart() {
         super.onStart()
 
-        val titleAdapter = TitleList(this, shoppingListViewModel.getLists())
+        val titleAdapter = TitleList(this, inventoryListViewModel.getItems())
 
         listViewLists.adapter = titleAdapter
     }
@@ -118,41 +111,16 @@ class InventoryActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == ADD_LIST_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
-            data.getStringExtra("title")?.let {
-                shoppingListViewModel.addLists(it, data.getStringExtra("date")!!)
+        if (requestCode == ADD_ITEM_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
+            data.getStringExtra("name")?.let {
+                inventoryListViewModel.addItem(it, data.getStringExtra("quantity")!!, data.getStringExtra("expiration")!!)
             }
         }
 
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.shopping_lists_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_more_information -> {
-                mDialog =
-                    DialogFragmentShoppingListsActivity.newInstance()
-                mDialog.show(supportFragmentManager,
-                    TAG
-                )
-                true
-            }
-            R.id.delete_all_lists -> {
-                val titleAdapter = TitleList(this,  shoppingListViewModel.deleteAllLists())
-
-                listViewLists.adapter = titleAdapter
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
     companion object {
-        private const val TAG = "SmartFridge:ShoppingListsActivity"
-        private val ADD_LIST_REQUEST = 0
+        private const val TAG = "SmartFridge:InventoryActivity"
+        private val ADD_ITEM_REQUEST = 0
     }
 }

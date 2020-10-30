@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.smartfridge.*
+import com.example.smartfridge.inventory.InventoryActivity
 import com.example.smartfridge.recipes.RecipesActivity
 import com.example.smartfridge.recipes.RecipesViewModel
 import com.example.smartfridge.recipes.RecipesViewModelFactory
