@@ -15,6 +15,8 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.smartfridge.R
 import com.example.smartfridge.shoppinglists.TitleList
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class RecipesActivity : AppCompatActivity() {
@@ -119,6 +121,14 @@ class RecipesActivity : AppCompatActivity() {
         listViewLists.onItemLongClickListener = AdapterView.OnItemLongClickListener { _, _, item, _ ->
             deleteDialog(item)
             true
+        }
+
+        generateSample()
+    }
+
+    private fun generateSample() {
+        if (recipesViewModel.getLists().size == 0) {
+            recipesViewModel.addItem("Coconut Cake", "Prep Time: 35 min", "Cook Time: 50 min" , "10 to 12 Servings")
         }
     }
 
