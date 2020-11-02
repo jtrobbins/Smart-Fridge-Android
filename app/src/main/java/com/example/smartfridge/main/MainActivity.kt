@@ -8,17 +8,31 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ImageButton
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProviders
 import com.example.smartfridge.*
 import com.example.smartfridge.recipes.RecipesActivity
+import com.example.smartfridge.recipes.RecipesViewModel
+import com.example.smartfridge.recipes.RecipesViewModelFactory
+import com.example.smartfridge.shoppinglists.ShoppingListViewModel
+import com.example.smartfridge.shoppinglists.ShoppingListViewModelFactory
 import com.example.smartfridge.shoppinglists.ShoppingListsActivity
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mDialog: DialogFragment
+    private lateinit var recipesViewModel: RecipesViewModel
+    private lateinit var shoppingListViewModel: ShoppingListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        shoppingListViewModel = ViewModelProviders.of(this, ShoppingListViewModelFactory.getInstance()).get(
+            ShoppingListViewModel::class.java)
+        recipesViewModel =ViewModelProviders.of(this, RecipesViewModelFactory.getInstance()).get(
+            RecipesViewModel::class.java)
 
         setSupportActionBar(findViewById(R.id.toolbar))
         supportActionBar?.title = "Smart Fridge"
@@ -59,6 +73,27 @@ class MainActivity : AppCompatActivity() {
             val notImplementedIntent = Intent(this, NotImplementedActivity::class.java)
             startActivity(notImplementedIntent)
         }
+
+        generateSample()
+    }
+
+    private fun generateSample() {
+        recipesViewModel.addItem("Coconut Cake", "Prep Time: 35 min", "Cook Time: 50 min" , "10 to 12 Servings")
+
+        val cal = Calendar.getInstance()
+        val date = SimpleDateFormat("MMM d, yyyy").format(cal.time)
+
+        shoppingListViewModel.addLists("Mary's Birthday!", date)
+        shoppingListViewModel.addItems(0, "Cake", "1")
+        shoppingListViewModel.addItems(0, "Coke", "2")
+        shoppingListViewModel.addItems(0, "Pizza", "3")
+
+        shoppingListViewModel.addLists("Grocery List", date)
+        shoppingListViewModel.addItems(1, "Eggs", "12")
+        shoppingListViewModel.addItems(1, "Bread", "1")
+        shoppingListViewModel.addItems(1, "Milk", "1")
+        shoppingListViewModel.addItems(1, "Apples", "8")
+        shoppingListViewModel.addItems(1, "Turkey", "1")
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

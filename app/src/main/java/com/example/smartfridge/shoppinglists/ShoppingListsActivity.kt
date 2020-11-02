@@ -62,8 +62,6 @@ class ShoppingListsActivity : AppCompatActivity() {
             deleteDialog(item)
             true
         }
-
-        generateSample()
     }
 
     private fun deleteDialog(item: Int) {
@@ -86,25 +84,6 @@ class ShoppingListsActivity : AppCompatActivity() {
         val alert = dialogBuilder.create()
         alert.setTitle("Delete")
         alert.show()
-    }
-
-    private fun generateSample() {
-        if (shoppingListViewModel.getLists().size == 0) {
-            val cal = Calendar.getInstance()
-            val date = SimpleDateFormat("MMM d, yyyy").format(cal.time)
-
-            shoppingListViewModel.addLists("Mary's Birthday!", date)
-            shoppingListViewModel.addItems(0, "Cake", "1")
-            shoppingListViewModel.addItems(0, "Coke", "2")
-            shoppingListViewModel.addItems(0, "Pizza", "3")
-
-            shoppingListViewModel.addLists("Grocery List", date)
-            shoppingListViewModel.addItems(1, "Eggs", "12")
-            shoppingListViewModel.addItems(1, "Bread", "1")
-            shoppingListViewModel.addItems(1, "Milk", "1")
-            shoppingListViewModel.addItems(1, "Apples", "8")
-            shoppingListViewModel.addItems(1, "Turkey", "1")
-        }
     }
 
     override fun onStart() {
