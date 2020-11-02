@@ -7,7 +7,8 @@
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:id="@+id/textViewItemName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textStyle="bold"/>
 
     <TextView
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"

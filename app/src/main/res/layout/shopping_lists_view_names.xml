@@ -28,6 +28,7 @@
 
     <TextView
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
         android:id="@+id/textViewName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
