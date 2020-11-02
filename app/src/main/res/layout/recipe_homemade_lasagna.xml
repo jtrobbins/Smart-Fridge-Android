@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- https://www.foodnetwork.com/recipes/robert-irvine/french-toast-recipe-1951408 -->
+<!-- https://www.foodnetwork.com/recipes/ree-drummond/lasagna-2111724 -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -38,21 +38,21 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/toast_image"
+                android:id="@+id/lasagna_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:src="@drawable/french_toast"/>
+                android:src="@drawable/homemade_lasagna"/>
 
             <TextView
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:id="@+id/spacer0"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/toast_image"/>
+                app:layout_constraintTop_toBottomOf="@id/lasagna_image"/>
 
             <TextView
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
@@ -76,7 +76,7 @@
                 app:layout_constraintTop_toTopOf="@id/textViewServings"
                 app:layout_constraintBottom_toBottomOf="@id/textViewServings"
                 android:paddingStart="@dimen/activity_horizontal_margin"
-                android:text="4"
+                android:text="8"
                 android:textStyle="bold"
                 android:gravity="center_vertical"/>
 
@@ -102,7 +102,7 @@
                 app:layout_constraintTop_toTopOf="@id/textViewPrepTime"
                 app:layout_constraintBottom_toBottomOf="@id/textViewPrepTime"
                 android:paddingStart="@dimen/activity_horizontal_margin"
-                android:text="20 min"
+                android:text="40 min"
                 android:textStyle="bold"
                 android:gravity="center_vertical"/>
 
@@ -128,7 +128,7 @@
                 app:layout_constraintTop_toTopOf="@id/textViewCookTime"
                 app:layout_constraintBottom_toBottomOf="@id/textViewCookTime"
                 android:paddingStart="@dimen/activity_horizontal_margin"
-                android:text="10 min"
+                android:text="1 hr 30 min"
                 android:textStyle="bold"
                 android:gravity="center_vertical"/>
 
@@ -163,7 +163,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="1 teaspoon ground cinnamon"
+                android:text="2 pounds hamburger"
                 android:textStyle="bold"/>
 
             <TextView
@@ -177,7 +177,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients1"
                 android:paddingStart="32dp"
                 android:textColor="@color/red"
-                android:text="1/4 teaspoon ground nutmeg"
+                android:text="1 pound hot breakfast sausage"
                 android:textStyle="bold"/>
 
             <TextView
@@ -191,7 +191,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients2"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="2 tablespoons sugar"
+                android:text="3 cloves garlic, finely chopped"
                 android:textStyle="bold"/>
 
             <TextView
@@ -205,7 +205,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients3"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="4 tablespoons butter"
+                android:text="One 28-ounce can diced tomatoes"
                 android:textStyle="bold"/>
 
             <TextView
@@ -219,7 +219,8 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients4"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="4 eggs"
+                android:textColor="@color/red"
+                android:text="One 6-ounce can tomato paste"
                 android:textStyle="bold"/>
 
             <TextView
@@ -233,7 +234,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients5"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="1/4 cup milk"
+                android:text="Freshly ground black pepper"
                 android:textStyle="bold"/>
 
             <TextView
@@ -247,7 +248,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients6"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="1/2 teaspoon vanilla extract"
+                android:text="1 tablespoon olive oil"
                 android:textStyle="bold"/>
 
             <TextView
@@ -261,8 +262,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients7"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:textColor="@color/red"
-                android:text="8 slices challah, brioche, or white bread"
+                android:text="Salt"
                 android:textStyle="bold"/>
 
             <TextView
@@ -276,7 +276,92 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients8"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="1/2 cup maple syrup, warmed"
+                android:text="10 ounces lasagna noodles"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:id="@+id/textViewIngredients10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewIngredients9"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:textColor="@color/red"
+                android:text="1 pound mozzarella"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:id="@+id/textViewIngredients11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewIngredients10"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:text="10 to 12 fresh basil leaves"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:id="@+id/textViewIngredients12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewIngredients11"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:text="1/4 cup fresh flat-leaf parsley leaves"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:id="@+id/textViewIngredients13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewIngredients12"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:text="3 cups low-fat cottage cheese"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:id="@+id/textViewIngredients14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewIngredients13"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:text="1 cup freshly grated Parmesan"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:id="@+id/textViewIngredients15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewIngredients14"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:text="2 eggs, beaten"
                 android:textStyle="bold"/>
 
             <TextView
@@ -287,7 +372,7 @@
                 android:paddingBottom="15dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewIngredients9"
+                app:layout_constraintTop_toBottomOf="@id/textViewIngredients15"
                 android:paddingStart="@dimen/activity_horizontal_margin"
                 android:text="Equipment:"
                 android:textStyle="bold"/>
@@ -303,7 +388,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewEquipment"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="Stove"
+                android:text="Oven"
                 android:textStyle="bold"/>
 
             <TextView
@@ -317,7 +402,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewEquipment1"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="10-inch or 12-inch skillet"
+                android:text="Large Skillet"
                 android:textStyle="bold"/>
 
             <TextView
@@ -331,7 +416,35 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewEquipment2"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="Mixing Bowl"
+                android:text="Stove"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:id="@+id/textViewEquipment4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewEquipment3"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:text="Large Pot"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:id="@+id/textViewEquipment5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewEquipment4"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:text="Deep Rectangular Baking Pan"
                 android:textStyle="bold"/>
 
             <TextView
@@ -342,7 +455,7 @@
                 android:paddingBottom="15dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewEquipment3"
+                app:layout_constraintTop_toBottomOf="@id/textViewEquipment5"
                 android:paddingStart="@dimen/activity_horizontal_margin"
                 android:text="Steps:"
                 android:textStyle="bold"/>
@@ -358,7 +471,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewSteps"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="1) In a small bowl, combine cinnamon, nutmeg, and sugar and set aside briefly."
+                android:text="1) In a large skillet over medium-high heat, saute the hamburger, sausage and garlic until brown. Drain off the excess fat. Add the tomatoes with their juice, tomato paste, 1/2 teaspoon salt and some freshly ground black pepper. Stir together well. Simmer over low heat, uncovered, for 45 minutes, stirring occasionally."
                 android:textStyle="bold"/>
 
             <TextView
@@ -372,7 +485,77 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewStep1"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="2) In a 10-inch or 12-inch skillet, melt butter over medium heat. Whisk together cinnamon mixture, eggs, milk, and vanilla and pour into a shallow container such as a pie plate. Dip bread in egg mixture. Fry slices until golden brown, then flip to cook the other side. Serve with syrup."
+                android:text="2) Meanwhile, bring a large pot of water to a boil. Add the olive oil and a dash of salt. Cook the lasagna noodles according to the package directions until al dente. Drain the noodles and lay them flat on a piece of aluminium foil to keep their shape."
+                android:textStyle="bold"/>
+
+            <TextView
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:id="@+id/textViewStep3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewStep2"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:text="3) Preheat the oven to 350 degrees F. "
+                android:textStyle="bold"/>
+
+            <TextView
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:id="@+id/textViewStep4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewStep3"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:text="4) Grate the mozzarella cheese and set aside. "
+                android:textStyle="bold"/>
+
+            <TextView
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:id="@+id/textViewStep5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewStep4"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:text="5) Cut the basil into a chiffonade by stacking the leaves on top of one another, rolling them tightly and then cutting across. Finely chop the parsley. Add half the herbs to the meat mixture and stir together. In a medium bowl, combine the other half of the herbs, the cottage cheese, 1/2 cup of the Parmesan and the eggs, and stir together well. "
+                android:textStyle="bold"/>
+
+            <TextView
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:id="@+id/textViewStep6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewStep5"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:text="6) Now let's assemble the lasagna! Begin by laying 4 lasagna noodles in the bottom of a deep rectangular baking pan; the noodles should slightly overlap. Spoon half the cottage cheese mixture onto the noodles; spread to distribute evenly. Sprinkle half the mozzarella on top of the cottage cheese mixture. Spoon just under half the meat mixture on top of the mozzarella, and spread evenly, being careful not to disrupt the layers below. Now repeat the process, beginning with a layer of lasagna noodles, followed by the cottage cheese mixture, followed by the mozzarella and ending with a thick layer of the meat mixture."
+                android:textStyle="bold"/>
+
+            <TextView
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:id="@+id/textViewStep7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewStep6"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:text="7) Sprinkle the remaining 1/2 cup Parmesan over the top. Bake until the lasagna is hot and bubbly, 35 to 45 minutes. Allow to stand 10 minutes before cutting into squares."
                 android:textStyle="bold"/>
 
 
