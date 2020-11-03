@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageButton
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.smartfridge.*
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mDialog: DialogFragment
     private lateinit var recipesViewModel: RecipesViewModel
     private lateinit var shoppingListViewModel: ShoppingListViewModel
+    private lateinit var mToolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +36,10 @@ class MainActivity : AppCompatActivity() {
         recipesViewModel =ViewModelProviders.of(this, RecipesViewModelFactory.getInstance()).get(
             RecipesViewModel::class.java)
 
+        mToolbar = findViewById(R.id.toolbar)
         setSupportActionBar(findViewById(R.id.toolbar))
         supportActionBar?.title = "Smart Fridge"
+        mToolbar.setTitleTextAppearance(this, R.style.AppTheme_AppBarOverlayMain)
 
         val button1 = findViewById<View>(R.id.button1) as ImageButton
         button1.setOnClickListener {

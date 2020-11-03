@@ -10,7 +10,7 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlayMain"
+        android:theme="@style/AppTheme.AppBarOverlay"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -49,6 +49,7 @@
             android:contentDescription="inventory button" />
 
         <TextView
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/button1"
@@ -57,6 +58,7 @@
             android:clickable="false"
             android:gravity="center"
             android:paddingTop="10dp"
+            android:textSize="18sp"
             android:text="Inventory" />
 
     </RelativeLayout>
@@ -86,6 +88,7 @@
             android:contentDescription="shopping list button" />
 
         <TextView
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/button2"
@@ -94,6 +97,7 @@
             android:clickable="false"
             android:gravity="center"
             android:paddingTop="10dp"
+            android:textSize="18sp"
             android:text="Shopping Lists" />
 
     </RelativeLayout>
@@ -123,6 +127,7 @@
             android:contentDescription="recipes button" />
 
         <TextView
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/button3"
@@ -131,6 +136,7 @@
             android:clickable="false"
             android:gravity="center"
             android:paddingTop="10dp"
+            android:textSize="18sp"
             android:text="Recipes" />
 
     </RelativeLayout>
@@ -160,6 +166,7 @@
             android:contentDescription="thermostat button" />
 
         <TextView
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/button4"
@@ -168,6 +175,7 @@
             android:clickable="false"
             android:gravity="center"
             android:paddingTop="10dp"
+            android:textSize="18sp"
             android:text="Thermostat" />
 
     </RelativeLayout>
@@ -197,6 +205,7 @@
             android:contentDescription="users button" />
 
         <TextView
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/button5"
@@ -205,6 +214,7 @@
             android:clickable="false"
             android:gravity="center"
             android:paddingTop="10dp"
+            android:textSize="18sp"
             android:text="Users" />
 
     </RelativeLayout>
@@ -234,6 +244,7 @@
             android:contentDescription="settings button" />
 
         <TextView
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/button6"
@@ -242,6 +253,7 @@
             android:clickable="false"
             android:gravity="center"
             android:paddingTop="10dp"
+            android:textSize="18sp"
             android:text="Settings" />
 
     </RelativeLayout>
