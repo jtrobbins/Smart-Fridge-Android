@@ -14,9 +14,6 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.smartfridge.R
-import com.example.smartfridge.shoppinglists.TitleList
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 class RecipesActivity : AppCompatActivity() {
