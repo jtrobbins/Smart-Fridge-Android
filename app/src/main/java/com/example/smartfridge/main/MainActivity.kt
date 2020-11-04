@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             RecipesViewModel::class.java)
 
         mToolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(findViewById(R.id.toolbar))
+        setSupportActionBar(mToolbar)
         supportActionBar?.title = "Smart Fridge"
         mToolbar.setTitleTextAppearance(this, R.style.AppTheme_AppBarOverlayMain)
 
