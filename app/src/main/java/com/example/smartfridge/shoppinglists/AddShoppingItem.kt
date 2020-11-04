@@ -28,6 +28,7 @@ class AddShoppingItem : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.title = "Add Item"
+        toolbar.setTitleTextAppearance(this, R.style.AppTheme_AppBarOverlayMain)
 
         toolbar.setNavigationOnClickListener {
             val data = Intent()

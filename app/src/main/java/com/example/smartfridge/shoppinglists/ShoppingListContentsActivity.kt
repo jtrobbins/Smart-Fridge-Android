@@ -38,6 +38,7 @@ class ShoppingListContentsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.title = shoppingItemViewModel.getListName(intent.getIntExtra("ID", 0))
+        toolbar.setTitleTextAppearance(this, R.style.AppTheme_AppBarOverlayMain)
 
         toolbar.setNavigationOnClickListener {
             finish()

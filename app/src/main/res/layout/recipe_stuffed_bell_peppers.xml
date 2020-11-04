@@ -163,7 +163,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="6 bell peppers, any color"
+                android:text="• 6 bell peppers, any color"
                 android:textStyle="bold"/>
 
             <TextView
@@ -176,7 +176,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients1"
                 android:paddingStart="32dp"
-                android:text="4 tablespoons olive oil, plus more for drizzling "
+                android:text="• 4 tablespoons olive oil, plus more for drizzling "
                 android:textStyle="bold"/>
 
             <TextView
@@ -190,7 +190,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients2"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="8 ounces lean ground beef "
+                android:text="• 8 ounces lean ground beef "
                 android:textStyle="bold"/>
 
             <TextView
@@ -205,7 +205,7 @@
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
                 android:textColor="@color/red"
-                android:text="1 1/2 cups grated pepper Jack cheese"
+                android:text="• 1 1/2 cups grated pepper Jack cheese"
                 android:textStyle="bold"/>
 
             <TextView
@@ -219,7 +219,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients4"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="Kosher salt and freshly ground black pepper"
+                android:text="• Kosher salt and freshly ground black pepper"
                 android:textStyle="bold"/>
 
             <TextView
@@ -233,7 +233,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients5"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="1 onion, finely diced "
+                android:text="• 1 onion, finely diced "
                 android:textStyle="bold"/>
 
             <TextView
@@ -247,7 +247,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients6"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="2 cloves garlic, chopped"
+                android:text="• 2 cloves garlic, chopped"
                 android:textStyle="bold"/>
 
             <TextView
@@ -261,7 +261,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients7"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="1 medium zucchini, finely diced "
+                android:text="• 1 medium zucchini, finely diced "
                 android:textStyle="bold"/>
 
             <TextView
@@ -275,7 +275,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients8"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="4 Roma tomatoes, seeded and finely diced "
+                android:text="• 4 Roma tomatoes, seeded and finely diced "
                 android:textStyle="bold"/>
 
             <TextView
@@ -289,7 +289,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients9"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="Red pepper flakes, as needed "
+                android:text="• Red pepper flakes, as needed "
                 android:textStyle="bold"/>
 
             <TextView
@@ -304,7 +304,7 @@
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
                 android:textColor="@color/red"
-                android:text="1 cup cooked long-grain and wild rice "
+                android:text="• 1 cup cooked long-grain and wild rice "
                 android:textStyle="bold"/>
 
             <TextView
@@ -331,7 +331,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewEquipment"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="Oven"
+                android:text="• Oven"
                 android:textStyle="bold"/>
 
             <TextView
@@ -345,7 +345,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewEquipment1"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="Large Skillet"
+                android:text="• Large Skillet"
                 android:textStyle="bold"/>
 
             <TextView
@@ -359,7 +359,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewEquipment2"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="Stove"
+                android:text="• Stove"
                 android:textStyle="bold"/>
 
             <TextView
@@ -373,7 +373,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewEquipment3"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="Baking Dish"
+                android:text="• Baking Dish"
                 android:textStyle="bold"/>
 
             <TextView

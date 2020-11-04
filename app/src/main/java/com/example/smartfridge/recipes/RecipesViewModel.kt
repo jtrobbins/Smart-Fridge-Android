@@ -8,8 +8,8 @@ class RecipesViewModel : ViewModel() {
 
     private var lists : MutableList<Recipes> = ArrayList()
 
-    fun addItem(name: String, pTime: String, cTime: String, servings: String) {
-        val newItem = Recipes(name, pTime, cTime, servings)
+    fun addItem(name: String, level: String, servings: String, pTime: String, cTime: String) {
+        val newItem = Recipes(name, level, servings, pTime, cTime)
         if(!lists.contains(newItem)) {
             lists.add(newItem)
         }

@@ -16,6 +16,7 @@ class FrenchToastActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.title = "French Toast"
+        toolbar.setTitleTextAppearance(this, R.style.AppTheme_AppBarOverlayMain)
 
         toolbar.setNavigationOnClickListener {
             finish()

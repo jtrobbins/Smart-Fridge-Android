@@ -18,16 +18,18 @@ class RecipeList(private val context: Activity, private var recipeLists: List<Re
         val listViewItem = inflater.inflate(R.layout.recipe_view_details, parent, false)
 
         val textViewRecipeName = listViewItem.findViewById<TextView>(R.id.textViewRecipeName)
+        val textViewRecipeLevel = listViewItem.findViewById<TextView>(R.id.textViewRecipeLevel)
+        val textViewRecipeServings = listViewItem.findViewById<TextView>(R.id.textViewRecipeServings)
         val textViewPrepTime = listViewItem.findViewById<TextView>(R.id.textViewRecipePrepTime)
         val textViewCookTime = listViewItem.findViewById<TextView>(R.id.textViewRecipeCookTime)
-        val textViewRecipeServings = listViewItem.findViewById<TextView>(R.id.textViewRecipeServings)
 
         val listItem = recipeLists[position]
 
         textViewRecipeName.text = listItem.recipeName
-        textViewPrepTime.text = listItem.recipeServings
-        textViewCookTime.text = listItem.recipePrepTime
-        textViewRecipeServings.text = listItem.recipeCookTime
+        textViewRecipeLevel.text = listItem.recipeLevel
+        textViewRecipeServings.text = listItem.recipeServings
+        textViewPrepTime.text = listItem.recipePrepTime
+        textViewCookTime.text = listItem.recipeCookTime
 
         return listViewItem
     }

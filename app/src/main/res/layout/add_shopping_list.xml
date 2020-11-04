@@ -29,6 +29,8 @@
         android:layout_height="wrap_content"
         android:textSize="30sp"
         android:layout_marginTop="15dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         app:layout_constraintTop_toBottomOf="@id/appBarLayout"
         app:layout_constraintLeft_toLeftOf="parent"
         android:text = "Title"/>
@@ -37,6 +39,8 @@
         android:id="@+id/shopping_list_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:hint="Enter Title"
         app:layout_constraintTop_toBottomOf="@id/description" />
 
@@ -46,6 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
         app:layout_constraintTop_toBottomOf="@id/shopping_list_title"
         android:text="Cancel" />
 
@@ -65,6 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
         app:layout_constraintTop_toBottomOf="@id/shopping_list_title"
         android:text="Submit" />
 

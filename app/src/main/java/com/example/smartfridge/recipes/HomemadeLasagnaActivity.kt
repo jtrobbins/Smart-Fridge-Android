@@ -16,6 +16,7 @@ class HomemadeLasagnaActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.title = "Homemade Lasagna"
+        toolbar.setTitleTextAppearance(this, R.style.AppTheme_AppBarOverlayMain)
 
         toolbar.setNavigationOnClickListener {
             finish()

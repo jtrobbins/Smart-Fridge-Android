@@ -56,12 +56,38 @@
 
             <TextView
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:id="@+id/textViewLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/textViewLevelRank"
+                app:layout_constraintTop_toBottomOf="@id/spacer0"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:text="Level:"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:id="@+id/textViewLevelRank"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toEndOf="@id/textViewLevel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/textViewLevel"
+                app:layout_constraintBottom_toBottomOf="@id/textViewLevel"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:text="Intermediate"
+                android:textStyle="bold"
+                android:gravity="center_vertical"/>
+
+            <TextView
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 android:id="@+id/textViewServings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/textViewServingsNum"
-                app:layout_constraintTop_toBottomOf="@id/spacer0"
+                app:layout_constraintTop_toBottomOf="@id/textViewLevel"
                 android:paddingStart="@dimen/activity_horizontal_margin"
                 android:text="Servings:"
                 android:textStyle="bold"/>
@@ -163,7 +189,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="2 pounds hamburger"
+                android:text="• 2 pounds hamburger"
                 android:textStyle="bold"/>
 
             <TextView
@@ -177,7 +203,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients1"
                 android:paddingStart="32dp"
                 android:textColor="@color/red"
-                android:text="1 pound hot breakfast sausage"
+                android:text="• 1 pound hot breakfast sausage"
                 android:textStyle="bold"/>
 
             <TextView
@@ -191,7 +217,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients2"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="3 cloves garlic, finely chopped"
+                android:text="• 3 cloves garlic, finely chopped"
                 android:textStyle="bold"/>
 
             <TextView
@@ -205,7 +231,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients3"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="One 28-ounce can diced tomatoes"
+                android:text="• One 28-ounce can diced tomatoes"
                 android:textStyle="bold"/>
 
             <TextView
@@ -220,7 +246,7 @@
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
                 android:textColor="@color/red"
-                android:text="One 6-ounce can tomato paste"
+                android:text="• One 6-ounce can tomato paste"
                 android:textStyle="bold"/>
 
             <TextView
@@ -234,7 +260,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients5"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="Freshly ground black pepper"
+                android:text="• Freshly ground black pepper"
                 android:textStyle="bold"/>
 
             <TextView
@@ -248,7 +274,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients6"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="1 tablespoon olive oil"
+                android:text="• 1 tablespoon olive oil"
                 android:textStyle="bold"/>
 
             <TextView
@@ -262,7 +288,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients7"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="Salt"
+                android:text="• Salt"
                 android:textStyle="bold"/>
 
             <TextView
@@ -276,7 +302,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients8"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="10 ounces lasagna noodles"
+                android:text="• 10 ounces lasagna noodles"
                 android:textStyle="bold"/>
 
             <TextView
@@ -291,7 +317,7 @@
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
                 android:textColor="@color/red"
-                android:text="1 pound mozzarella"
+                android:text="• 1 pound mozzarella"
                 android:textStyle="bold"/>
 
             <TextView
@@ -305,7 +331,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients10"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="10 to 12 fresh basil leaves"
+                android:text="• 10 to 12 fresh basil leaves"
                 android:textStyle="bold"/>
 
             <TextView
@@ -319,7 +345,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients11"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="1/4 cup fresh flat-leaf parsley leaves"
+                android:text="• 1/4 cup fresh flat-leaf parsley leaves"
                 android:textStyle="bold"/>
 
             <TextView
@@ -333,7 +359,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients12"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="3 cups low-fat cottage cheese"
+                android:text="• 3 cups low-fat cottage cheese"
                 android:textStyle="bold"/>
 
             <TextView
@@ -347,7 +373,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients13"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="1 cup freshly grated Parmesan"
+                android:text="• 1 cup freshly grated Parmesan"
                 android:textStyle="bold"/>
 
             <TextView
@@ -361,7 +387,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients14"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="2 eggs, beaten"
+                android:text="• 2 eggs, beaten"
                 android:textStyle="bold"/>
 
             <TextView
@@ -388,7 +414,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewEquipment"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="Oven"
+                android:text="• Oven"
                 android:textStyle="bold"/>
 
             <TextView
@@ -402,7 +428,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewEquipment1"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="Large Skillet"
+                android:text="• Large Skillet"
                 android:textStyle="bold"/>
 
             <TextView
@@ -416,7 +442,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewEquipment2"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="Stove"
+                android:text="• Stove"
                 android:textStyle="bold"/>
 
             <TextView
@@ -430,7 +456,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewEquipment3"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="Large Pot"
+                android:text="• Large Pot"
                 android:textStyle="bold"/>
 
             <TextView
@@ -444,7 +470,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewEquipment4"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="Deep Rectangular Baking Pan"
+                android:text="• Deep Rectangular Baking Pan"
                 android:textStyle="bold"/>
 
             <TextView

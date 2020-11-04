@@ -16,6 +16,7 @@ class StuffedBellPeppersActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.title = "Stuffed Bell Peppers"
+        toolbar.setTitleTextAppearance(this, R.style.AppTheme_AppBarOverlayMain)
 
         toolbar.setNavigationOnClickListener {
             finish()

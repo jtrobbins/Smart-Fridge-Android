@@ -56,12 +56,38 @@
 
             <TextView
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:id="@+id/textViewLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/textViewLevelRank"
+                app:layout_constraintTop_toBottomOf="@id/spacer0"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:text="Level:"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:id="@+id/textViewLevelRank"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toEndOf="@id/textViewLevel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/textViewLevel"
+                app:layout_constraintBottom_toBottomOf="@id/textViewLevel"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:text="Hard"
+                android:textStyle="bold"
+                android:gravity="center_vertical"/>
+
+            <TextView
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 android:id="@+id/textViewServings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/textViewServingsNum"
-                app:layout_constraintTop_toBottomOf="@id/spacer0"
+                app:layout_constraintTop_toBottomOf="@id/textViewLevel"
                 android:paddingStart="@dimen/activity_horizontal_margin"
                 android:text="Servings:"
                 android:textStyle="bold"/>
@@ -163,7 +189,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="3/4 pound (3 sticks) unsalted butter, at room temperature, plus more for greasing the pans"
+                android:text="• 3/4 pound (3 sticks) unsalted butter, at room temperature, plus more for greasing the pans"
                 android:textStyle="bold"/>
 
             <TextView
@@ -176,7 +202,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients1"
                 android:paddingStart="32dp"
-                android:text="2 cups sugar"
+                android:text="• 2 cups sugar"
                 android:textStyle="bold"/>
 
             <TextView
@@ -190,7 +216,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients2"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="5 extra-large eggs, at room temperature"
+                android:text="• 5 extra-large eggs, at room temperature"
                 android:textStyle="bold"/>
 
             <TextView
@@ -204,7 +230,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients3"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="1 1/2 teaspoons pure vanilla extract"
+                android:text="• 1 1/2 teaspoons pure vanilla extract"
                 android:textStyle="bold"/>
 
             <TextView
@@ -219,7 +245,7 @@
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
                 android:textColor="@color/red"
-                android:text="1 1/2 teaspoons pure almond extract"
+                android:text="• 1 1/2 teaspoons pure almond extract"
                 android:textStyle="bold"/>
 
             <TextView
@@ -233,7 +259,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients5"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="3 cups all-purpose flour, plus more for dusting the pans"
+                android:text="• 3 cups all-purpose flour, plus more for dusting the pans"
                 android:textStyle="bold"/>
 
             <TextView
@@ -247,7 +273,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients6"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="1 teaspoon baking powder"
+                android:text="• 1 teaspoon baking powder"
                 android:textStyle="bold"/>
 
             <TextView
@@ -261,7 +287,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients7"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="1/2 teaspoon baking soda"
+                android:text="• 1/2 teaspoon baking soda"
                 android:textStyle="bold"/>
 
             <TextView
@@ -275,7 +301,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients8"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="1/2 teaspoon kosher salt"
+                android:text="• 1/2 teaspoon kosher salt"
                 android:textStyle="bold"/>
 
             <TextView
@@ -289,7 +315,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients9"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="1 cup milk"
+                android:text="• 1 cup milk"
                 android:textStyle="bold"/>
 
             <TextView
@@ -304,7 +330,7 @@
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
                 android:textColor="@color/red"
-                android:text="4 ounces sweetened shredded coconut"
+                android:text="• 4 ounces sweetened shredded coconut"
                 android:textStyle="bold"/>
 
             <TextView
@@ -317,7 +343,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textViewIngredients11"
                 android:paddingStart="@dimen/activity_horizontal_margin"
-                android:text="For the frosting:"
+                android:text="• For the frosting:"
                 android:textStyle="bold"/>
 
             <TextView
@@ -331,7 +357,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewFrosting"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="1 pound cream cheese, at room temperature"
+                android:text="• 1 pound cream cheese, at room temperature"
                 android:textStyle="bold"/>
 
             <TextView
@@ -345,7 +371,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewFrosting1"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="1/2 pound (2 sticks) unsalted butter, at room temperature"
+                android:text="• 1/2 pound (2 sticks) unsalted butter, at room temperature"
                 android:textStyle="bold"/>
 
             <TextView
@@ -359,7 +385,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewFrosting2"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="3/4 teaspoon pure vanilla extract"
+                android:text="• 3/4 teaspoon pure vanilla extract"
                 android:textStyle="bold"/>
 
             <TextView
@@ -373,7 +399,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewFrosting3"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="1/4 teaspoon pure almond extract"
+                android:text="• 1/4 teaspoon pure almond extract"
                 android:textStyle="bold"/>
 
             <TextView
@@ -387,7 +413,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewFrosting4"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="1 pound confectioners' sugar, sifted"
+                android:text="• 1 pound confectioners' sugar, sifted"
                 android:textStyle="bold"/>
 
             <TextView
@@ -402,7 +428,7 @@
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
                 android:textColor="@color/red"
-                android:text="6 ounces sweetened shredded coconut"
+                android:text="• 6 ounces sweetened shredded coconut"
                 android:textStyle="bold"/>
 
             <TextView
@@ -429,7 +455,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewEquipment"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="Oven"
+                android:text="• Oven"
                 android:textStyle="bold"/>
 
             <TextView
@@ -443,7 +469,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewEquipment1"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="Electric Mixer"
+                android:text="• Electric Mixer"
                 android:textStyle="bold"/>
 
             <TextView
@@ -457,7 +483,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewEquipment2"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="2 (9-inch) round cake pans"
+                android:text="• 2 (9-inch) round cake pans"
                 android:textStyle="bold"/>
 
             <TextView
@@ -471,7 +497,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textViewEquipment3"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="Mixing Bowl"
+                android:text="• Mixing Bowl"
                 android:textStyle="bold"/>
 
             <TextView

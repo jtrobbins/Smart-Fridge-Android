@@ -44,7 +44,7 @@ class RecipesActivity : AppCompatActivity() {
             if ((event != null && (event.keyCode == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
 
                 if (searchView.text.toString() == "Coconut Cake") {
-                    recipesViewModel.addItem("Coconut Cake", "Prep Time: 35 min", "Cook Time: 50 min" , "10 to 12 Servings")
+                    recipesViewModel.addItem("Coconut Cake", "Level: Hard", "Servings: 10 to 12", "Prep Time: 35 min", "Cook Time: 50 min")
                     val recipeAdapter = RecipeList(this, recipesViewModel.getLists())
                     listViewLists.adapter = recipeAdapter
 
@@ -52,7 +52,7 @@ class RecipesActivity : AppCompatActivity() {
                     startActivity(coconutCakeIntent)
 
                 } else if (searchView.text.toString() == "Homemade Lasagna") {
-                    recipesViewModel.addItem("Homemade Lasagna", "Prep Time: 40 min", "Cook Time: 1 hr 30 min" , "8 Servings")
+                    recipesViewModel.addItem("Homemade Lasagna", "Level: Intermediate", "Servings: 8", "Prep Time: 40 min", "Cook Time: 1 hr 30 min")
                     val recipeAdapter = RecipeList(this, recipesViewModel.getLists())
                     listViewLists.adapter = recipeAdapter
 
@@ -60,7 +60,7 @@ class RecipesActivity : AppCompatActivity() {
                     startActivity(homemadeLasagnaIntent)
 
                 } else if (searchView.text.toString() == "Stuffed Bell Peppers") {
-                    recipesViewModel.addItem("Stuffed Bell Peppers", "Prep Time: 45 min", "Cook Time: 45 min" , "4 to 6 Servings")
+                    recipesViewModel.addItem("Stuffed Bell Peppers", "Level: Easy","Servings: 4 to 6", "Prep Time: 45 min", "Cook Time: 45 min" )
                     val recipeAdapter = RecipeList(this, recipesViewModel.getLists())
                     listViewLists.adapter = recipeAdapter
 
@@ -68,7 +68,7 @@ class RecipesActivity : AppCompatActivity() {
                     startActivity(stuffedBellPeppersIntent)
 
                 } else if (searchView.text.toString() == "French Toast") {
-                    recipesViewModel.addItem("French Toast", "Prep Time: 20 min", "Cook Time: 10 min" , "4 Servings")
+                    recipesViewModel.addItem("French Toast", "Level: Easy","Servings: 4","Prep Time: 20 min", "Cook Time: 10 min")
                     val recipeAdapter = RecipeList(this, recipesViewModel.getLists())
                     listViewLists.adapter = recipeAdapter
 
@@ -76,7 +76,7 @@ class RecipesActivity : AppCompatActivity() {
                     startActivity(frenchToastIntent)
 
                 } else if (searchView.text.toString() == "Broccoli Salad") {
-                    recipesViewModel.addItem("Broccoli Salad", "Prep Time: 15 min", "Cook Time: 1 hr 15 min" , "10 Servings")
+                    recipesViewModel.addItem("Broccoli Salad", "Level: Easy","Servings: 10", "Prep Time: 15 min", "Cook Time: 1 hr 15 min")
                     val recipeAdapter = RecipeList(this, recipesViewModel.getLists())
                     listViewLists.adapter = recipeAdapter
 
@@ -92,6 +92,7 @@ class RecipesActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.title = "Recipes"
+        toolbar.setTitleTextAppearance(this, R.style.AppTheme_AppBarOverlayMain)
 
         toolbar.setNavigationOnClickListener {
             finish()
