@@ -1,23 +1,23 @@
 package com.example.smartfridge.recipes
 
-import android.content.DialogInterface
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
-import android.view.inputmethod.EditorInfo
-import android.widget.*
-import androidx.appcompat.app.AlertDialog
+import android.view.MotionEvent
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.smartfridge.R
-import androidx.appcompat.widget.SearchView
-import com.example.smartfridge.main.MainActivity
-import com.example.smartfridge.shoppinglists.AddShoppingList
-import com.example.smartfridge.shoppinglists.ShoppingListsActivity
 
 
 class RecipesActivity : AppCompatActivity() {
@@ -32,7 +32,10 @@ class RecipesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.recipes)
 
-        recipesViewModel = ViewModelProviders.of(this, RecipesViewModelFactory.getInstance()).get(RecipesViewModel::class.java)
+        findViewById<View>(android.R.id.content).isFocusableInTouchMode = true
+
+        recipesViewModel = ViewModelProviders.of(this, RecipesViewModelFactory.getInstance())
+            .get(RecipesViewModel::class.java)
 
         listViewLists = findViewById(R.id.listViewRecipes)
 
@@ -49,11 +52,41 @@ class RecipesActivity : AppCompatActivity() {
             finish()
         }
 
-        recipesViewModel.addItem("Broccoli Salad", "Level: Easy","Servings: 10", "Prep Time: 15 min", "Cook Time: 1 hr 15 min")
-        recipesViewModel.addItem("Coconut Cake", "Level: Hard", "Servings: 10 to 12", "Prep Time: 35 min", "Cook Time: 50 min")
-        recipesViewModel.addItem("French Toast", "Level: Easy","Servings: 4","Prep Time: 20 min", "Cook Time: 10 min")
-        recipesViewModel.addItem("Homemade Lasagna", "Level: Intermediate", "Servings: 8", "Prep Time: 40 min", "Cook Time: 1 hr 30 min")
-        recipesViewModel.addItem("Stuffed Bell Peppers", "Level: Easy","Servings: 4 to 6", "Prep Time: 45 min", "Cook Time: 45 min" )
+        recipesViewModel.addItem(
+            "Broccoli Salad",
+            "Level: Easy",
+            "Servings: 10",
+            "Prep Time: 15 min",
+            "Cook Time: 1 hr 15 min"
+        )
+        recipesViewModel.addItem(
+            "Coconut Cake",
+            "Level: Hard",
+            "Servings: 10 to 12",
+            "Prep Time: 35 min",
+            "Cook Time: 50 min"
+        )
+        recipesViewModel.addItem(
+            "French Toast",
+            "Level: Easy",
+            "Servings: 4",
+            "Prep Time: 20 min",
+            "Cook Time: 10 min"
+        )
+        recipesViewModel.addItem(
+            "Homemade Lasagna",
+            "Level: Intermediate",
+            "Servings: 8",
+            "Prep Time: 40 min",
+            "Cook Time: 1 hr 30 min"
+        )
+        recipesViewModel.addItem(
+            "Stuffed Bell Peppers",
+            "Level: Easy",
+            "Servings: 4 to 6",
+            "Prep Time: 45 min",
+            "Cook Time: 45 min"
+        )
 
         recipeAdapter = RecipeList(this, recipesViewModel.getLists())
         listViewLists.adapter = recipeAdapter
@@ -91,6 +124,13 @@ class RecipesActivity : AppCompatActivity() {
                 return false
             }
         })
+    }
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        val imm =
+            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+        return super.onTouchEvent(event)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
