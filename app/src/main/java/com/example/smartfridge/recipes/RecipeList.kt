@@ -4,14 +4,21 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import com.example.smartfridge.R
 
 class RecipeList(private val context: Activity, private var recipeLists: List<Recipes>) :
-    ArrayAdapter<Recipes>(context, R.layout.recipe_view_details, recipeLists) {
+    ArrayAdapter<Recipes>(context, R.layout.recipe_view_details, recipeLists), Filterable {
 
+    private var filteredRecipeList: List<Recipes> = recipeLists
+
+    override fun getCount(): Int {
+        return filteredRecipeList.size
+    }
+
+    override fun getItem(p0: Int): Recipes? {
+        return filteredRecipeList[p0]
+    }
 
     @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -25,7 +32,7 @@ class RecipeList(private val context: Activity, private var recipeLists: List<Re
         val textViewCookTime = listViewItem.findViewById<TextView>(R.id.textViewRecipeCookTime)
         val imageViewImage = listViewItem.findViewById<ImageView>(R.id.listImageRecipe)
 
-        val listItem = recipeLists[position]
+        val listItem = filteredRecipeList[position]
 
         textViewRecipeName.text = listItem.recipeName
         textViewRecipeLevel.text = listItem.recipeLevel
@@ -47,4 +54,27 @@ class RecipeList(private val context: Activity, private var recipeLists: List<Re
 
         return listViewItem
     }
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun publishResults(charSequence: CharSequence?, filterResults: FilterResults) {
+                filteredRecipeList = filterResults.values as List<Recipes>
+                notifyDataSetChanged()
+            }
+
+            override fun performFiltering(charSequence: CharSequence?): FilterResults {
+                val queryString = charSequence?.toString()?.toLowerCase()
+
+                val filterResults = FilterResults()
+                filterResults.values = if (queryString==null || queryString.isEmpty())
+                    recipeLists
+                else
+                    recipeLists.filter {
+                        it.recipeName.toLowerCase().contains(queryString)
+                    }
+                return filterResults
+            }
+        }
+    }
+
 }

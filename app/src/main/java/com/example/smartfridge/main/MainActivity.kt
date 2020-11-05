@@ -82,7 +82,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun generateSample() {
-        recipesViewModel.addItem("French Toast", "Level: Easy","Servings: 4","Prep Time: 20 min", "Cook Time: 10 min")
 
         val cal = Calendar.getInstance()
         val date = SimpleDateFormat("MMM d, yyyy").format(cal.time)
