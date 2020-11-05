@@ -134,7 +134,7 @@ class RecipesActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.recipes_menu, menu)
+        menuInflater.inflate(R.menu.main_activity_menu, menu)
         return true
     }
 
@@ -146,12 +146,6 @@ class RecipesActivity : AppCompatActivity() {
                 mDialog.show(supportFragmentManager,
                     TAG
                 )
-                true
-            }
-            R.id.clear_all -> {
-                val recipeAdapter = RecipeList(this,  recipesViewModel.clearAll())
-
-                listViewLists.adapter = recipeAdapter
                 true
             }
             else -> super.onOptionsItemSelected(item)

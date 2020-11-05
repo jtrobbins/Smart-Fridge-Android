@@ -70,7 +70,9 @@ class RecipeList(private val context: Activity, private var recipeLists: List<Re
                     recipeLists
                 else
                     recipeLists.filter {
-                        it.recipeName.toLowerCase().contains(queryString)
+                        it.recipeName.toLowerCase().contains(queryString) ||
+
+                                it.recipeLevel.toLowerCase().contains(queryString)
                     }
                 return filterResults
             }

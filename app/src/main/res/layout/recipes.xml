@@ -41,10 +41,10 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         app:iconifiedByDefault="false"
-        app:queryHint="Filter recipes by name"
+        app:queryHint="Filter recipes by name or level"
         android:inputType="text"
         android:focusable="false"
-        android:completionThreshold="0"
+        android:completionThreshold="3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/recipes_icon" />
