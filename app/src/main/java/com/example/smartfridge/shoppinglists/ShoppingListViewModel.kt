@@ -24,8 +24,8 @@ class ShoppingListViewModel : ViewModel() {
         return lists
     }
 
-    fun addItems(index: Int, name: String, quantity: String) {
-        lists[index].listItems.add(Item(name, quantity))
+    fun addItems(index: Int, name: String, quantity: String, checked: Boolean) {
+        lists[index].listItems.add(Item(name, quantity, checked))
     }
 
     fun deleteItems(index: Int, item: Int) {
@@ -47,6 +47,10 @@ class ShoppingListViewModel : ViewModel() {
 
     fun editListName(index: Int, name: String)  {
         lists[index].listName = name
+    }
+
+    fun editChecked(index: Int, item: Int, checked: Boolean)  {
+        lists[index].listItems[item].isChecked = checked
     }
 
     fun getQuantity(index: Int, item: Int): String  {

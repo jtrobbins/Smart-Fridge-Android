@@ -8,11 +8,13 @@ import android.os.Bundle
 import android.text.InputType.TYPE_CLASS_NUMBER
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.EditText
+import android.widget.FrameLayout
+import android.widget.ListView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.marginLeft
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.smartfridge.R
@@ -54,10 +56,11 @@ class ShoppingListContentsActivity : AppCompatActivity() {
             updateQuantityDialog(item)
         }
 
-        listViewLists.onItemLongClickListener = AdapterView.OnItemLongClickListener { _, _, item, _ ->
-            deleteDialog(item)
-            true
-        }
+       listViewLists.onItemLongClickListener = AdapterView.OnItemLongClickListener { _, _, item, _ ->
+           deleteDialog(item)
+           true
+       }
+
     }
 
     private fun updateQuantityDialog(item: Int) {
@@ -149,7 +152,7 @@ class ShoppingListContentsActivity : AppCompatActivity() {
         if (requestCode == ADD_LIST_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
             val listId = intent.getIntExtra("ID", 0)
             data.getStringExtra("name")?.let {
-                shoppingItemViewModel.addItems(listId, it, data.getStringExtra("quantity")!!
+                shoppingItemViewModel.addItems(listId, it, data.getStringExtra("quantity")!!, false
                 )
             }
         }
