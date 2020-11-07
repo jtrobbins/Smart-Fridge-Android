@@ -86,12 +86,12 @@ class MainActivity : AppCompatActivity() {
         val cal = Calendar.getInstance()
         val date = SimpleDateFormat("MMM d, yyyy").format(cal.time)
 
-        shoppingListViewModel.addLists("Mary's Birthday!", date)
+        shoppingListViewModel.addLists("Mary's Birthday!", date, 2)
         shoppingListViewModel.addItems(0, "Cake", "1", false)
         shoppingListViewModel.addItems(0, "Coke", "2", true)
         shoppingListViewModel.addItems(0, "Pizza", "3", false)
 
-        shoppingListViewModel.addLists("Grocery List", date)
+        shoppingListViewModel.addLists("Grocery List", date, 3)
         shoppingListViewModel.addItems(1, "Eggs", "12", false)
         shoppingListViewModel.addItems(1, "Bread", "1", true)
         shoppingListViewModel.addItems(1, "Milk", "1", true)

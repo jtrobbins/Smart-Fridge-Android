@@ -7,8 +7,8 @@ class ShoppingListViewModel : ViewModel() {
 
     private var lists : MutableList<ShoppingList> = ArrayList()
 
-    fun addLists(name: String, date: String) {
-        lists.add(ShoppingList(name, date))
+    fun addLists(name: String, date: String, icon: Int) {
+        lists.add(ShoppingList(name, date, icon))
     }
 
     fun deleteLists(index: Int) {
@@ -49,8 +49,8 @@ class ShoppingListViewModel : ViewModel() {
         lists[index].listName = name
     }
 
-    fun editChecked(index: Int, item: Int, checked: Boolean)  {
-        lists[index].listItems[item].isChecked = checked
+    fun getListIcon(index: Int): Int {
+        return lists[index].listImage
     }
 
     fun getQuantity(index: Int, item: Int): String  {

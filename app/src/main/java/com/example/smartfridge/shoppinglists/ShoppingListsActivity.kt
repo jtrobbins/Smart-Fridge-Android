@@ -100,7 +100,7 @@ class ShoppingListsActivity : AppCompatActivity() {
 
         if (requestCode == ADD_LIST_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
             data.getStringExtra("title")?.let {
-                shoppingListViewModel.addLists(it, data.getStringExtra("date")!!)
+                shoppingListViewModel.addLists(it, data.getStringExtra("date")!!, data.getStringExtra("icon")!!.toInt())
             }
         }
 

@@ -8,10 +8,7 @@ import android.os.Bundle
 import android.text.InputType.TYPE_CLASS_NUMBER
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.AdapterView
-import android.widget.EditText
-import android.widget.FrameLayout
-import android.widget.ListView
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -51,6 +48,25 @@ class ShoppingListContentsActivity : AppCompatActivity() {
             val addShoppingItemIntent = Intent(this, AddShoppingItem::class.java)
             startActivityForResult(addShoppingItemIntent, ADD_LIST_REQUEST)
         }
+
+        val imageViewIcon = findViewById<ImageView>(R.id.listContentsListImage)
+        val listId = intent.getIntExtra("ID", 0)
+        val icon = shoppingItemViewModel.getListIcon(listId)
+
+        if (icon == 1) {
+            imageViewIcon.setImageResource(R.drawable.ic_shopping_list_icon)
+        } else if (icon == 2) {
+            imageViewIcon.setImageResource(R.drawable.ic_shopping_list_icon)
+        } else if (icon == 3) {
+            imageViewIcon.setImageResource(R.drawable.ic_shopping_list_icon)
+        } else if (icon == 4) {
+            imageViewIcon.setImageResource(R.drawable.ic_shopping_list_icon)
+        } else if (icon == 5) {
+            imageViewIcon.setImageResource(R.drawable.ic_shopping_list_icon)
+        } else if (icon == 6) {
+            imageViewIcon.setImageResource(R.drawable.ic_shopping_list_icon)
+        }
+
 
         listViewLists.onItemClickListener = AdapterView.OnItemClickListener { _, _, item, _ ->
             updateQuantityDialog(item)
