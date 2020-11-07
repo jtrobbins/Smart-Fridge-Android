@@ -47,12 +47,42 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:src="@drawable/stuffed_bell_peppers"/>
 
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:rating="4.0"
+                app:layout_constraintTop_toBottomOf="@+id/peppers_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:stepSize="0.5" />
+
+            <TextView
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:id="@+id/textViewLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/textViewLevelRank"
+                app:layout_constraintTop_toBottomOf="@id/ratingBar"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:text="Level:"
+                android:textStyle="bold"/>
+
             <TextView
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                android:id="@+id/spacer0"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/peppers_image"/>
+                android:id="@+id/textViewLevelRank"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toEndOf="@id/textViewLevel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/textViewLevel"
+                app:layout_constraintBottom_toBottomOf="@id/textViewLevel"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:text="Easy"
+                android:textStyle="bold"
+                android:gravity="center_vertical"/>
 
             <TextView
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
@@ -61,7 +91,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/textViewServingsNum"
-                app:layout_constraintTop_toBottomOf="@id/spacer0"
+                app:layout_constraintTop_toBottomOf="@id/textViewLevel"
                 android:paddingStart="@dimen/activity_horizontal_margin"
                 android:text="Servings:"
                 android:textStyle="bold"/>
