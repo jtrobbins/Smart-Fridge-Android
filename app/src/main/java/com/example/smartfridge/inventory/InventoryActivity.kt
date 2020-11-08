@@ -12,12 +12,14 @@ import android.view.MenuItem
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
 import com.example.smartfridge.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.lifecycle.ViewModelProviders
 import com.example.smartfridge.main.NotImplementedActivity
+import com.example.smartfridge.recipes.RecipeList
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -25,6 +27,7 @@ class InventoryActivity : AppCompatActivity() {
 
     private lateinit var mDialog: DialogFragment
     private lateinit var listViewLists: ListView
+    private lateinit var filterView: SearchView
     private lateinit var inventoryListViewModel: InventoryListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,12 +38,14 @@ class InventoryActivity : AppCompatActivity() {
 
         listViewLists = findViewById(R.id.listViewTitles)
 
+        filterView = findViewById(R.id.search_inventory)
+
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.title = "Fridge Inventory"
-
+        toolbar.setTitleTextAppearance(this, R.style.AppTheme_AppBarOverlayMain)
         toolbar.setNavigationOnClickListener {
             finish()
         }
@@ -56,17 +61,24 @@ class InventoryActivity : AppCompatActivity() {
             val fridgeCamIntent = Intent(this, FridgeCamView::class.java)
             startActivity(fridgeCamIntent)
         }
-        /*listViewLists.onItemClickListener = AdapterView.OnItemClickListener { _, _, item, _ ->
 
-            val shoppingListContentsIntent = Intent(applicationContext, ShoppingListContentsActivity::class.java)
-            shoppingListContentsIntent.putExtra("ID", item)
-            startActivity(shoppingListContentsIntent)
-        }*/
+        /*inventoryAdapter = InventoryItem(this, recipesViewModel.getLists())
+        filterView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                recipeAdapter.filter.filter(query)
+                return false
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                recipeAdapter.filter.filter(newText)
+                return false
+            }
+        })*/
 
         listViewLists.onItemLongClickListener = AdapterView.OnItemLongClickListener { _, _, item, _ ->
             deleteDialog(item)
             true
         }
+
 
         generateSample()
     }

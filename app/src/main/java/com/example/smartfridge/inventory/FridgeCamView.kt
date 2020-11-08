@@ -26,7 +26,7 @@ class FridgeCamView : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.title = "FridgeCam View"
-
+        toolbar.setTitleTextAppearance(this, R.style.AppTheme_AppBarOverlayMain)
         toolbar.setNavigationOnClickListener {
             val data = Intent()
             setResult(Activity.RESULT_CANCELED, data)

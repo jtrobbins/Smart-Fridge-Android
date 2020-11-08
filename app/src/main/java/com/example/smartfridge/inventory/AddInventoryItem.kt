@@ -26,7 +26,7 @@ class AddInventoryItem : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.title = "Add Item"
-
+        toolbar.setTitleTextAppearance(this, R.style.AppTheme_AppBarOverlayMain)
         toolbar.setNavigationOnClickListener {
             val data = Intent()
             setResult(Activity.RESULT_CANCELED, data)
