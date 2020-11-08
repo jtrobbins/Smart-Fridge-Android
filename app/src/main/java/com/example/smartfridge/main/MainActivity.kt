@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.smartfridge.*
+import com.example.smartfridge.inventory.InventoryActivity
 import com.example.smartfridge.recipes.RecipesActivity
 import com.example.smartfridge.recipes.RecipesViewModel
 import com.example.smartfridge.recipes.RecipesViewModelFactory
@@ -43,8 +44,8 @@ class MainActivity : AppCompatActivity() {
 
         val button1 = findViewById<View>(R.id.button1) as ImageButton
         button1.setOnClickListener {
-            val notImplementedIntent = Intent(this, NotImplementedActivity::class.java)
-            startActivity(notImplementedIntent)
+            val inventoryIntent = Intent(this, InventoryActivity::class.java)
+            startActivity(inventoryIntent)
         }
 
         val button2 = findViewById<View>(R.id.button2) as ImageButton
