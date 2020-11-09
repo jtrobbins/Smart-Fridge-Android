@@ -37,17 +37,17 @@ class TitleList(private val context: Activity, private var shoppingLists: List<S
         textDateCreated.text = date
 
         if (icon == 1) {
-            imageViewIcon.setImageResource(R.drawable.ic_shopping_list_icon)
+            imageViewIcon.setImageResource(R.drawable.ic_cutlery_icon)
         } else if (icon == 2) {
-            imageViewIcon.setImageResource(R.drawable.ic_shopping_list_icon)
+            imageViewIcon.setImageResource(R.drawable.ic_cake_icon)
         } else if (icon == 3) {
-            imageViewIcon.setImageResource(R.drawable.ic_shopping_list_icon)
+            imageViewIcon.setImageResource(R.drawable.ic_burger_icon)
         } else if (icon == 4) {
-            imageViewIcon.setImageResource(R.drawable.ic_shopping_list_icon)
+            imageViewIcon.setImageResource(R.drawable.ic_chicken_icon)
         } else if (icon == 5) {
-            imageViewIcon.setImageResource(R.drawable.ic_shopping_list_icon)
+            imageViewIcon.setImageResource(R.drawable.ic_strawberry_icon)
         } else if (icon == 6) {
-            imageViewIcon.setImageResource(R.drawable.ic_shopping_list_icon)
+            imageViewIcon.setImageResource(R.drawable.ic_milk_icon)
         }
 
         return listViewItem

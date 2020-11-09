@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
         shoppingListViewModel.addItems(0, "Coke", "2", true)
         shoppingListViewModel.addItems(0, "Pizza", "3", false)
 
-        shoppingListViewModel.addLists("Grocery List", date, 3)
+        shoppingListViewModel.addLists("Grocery List", date, 1)
         shoppingListViewModel.addItems(1, "Eggs", "12", false)
         shoppingListViewModel.addItems(1, "Bread", "1", true)
         shoppingListViewModel.addItems(1, "Milk", "1", true)
