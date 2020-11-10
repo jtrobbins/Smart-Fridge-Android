@@ -16,8 +16,9 @@ class DialogFragmentMainActivity : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return AlertDialog.Builder(activity)
-            .setTitle("Lorem Ipsum")
-            .setMessage("Lorem Ipsum.")
+            .setTitle("Smart Fridge")
+            .setMessage("Welcome to Smart Fridge! Check out our features by clicking the buttons" +
+                    " below.")
             .create()
     }
 }

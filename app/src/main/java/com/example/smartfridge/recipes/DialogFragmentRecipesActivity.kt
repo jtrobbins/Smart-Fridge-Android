@@ -16,8 +16,8 @@ class DialogFragmentRecipesActivity : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return AlertDialog.Builder(activity)
-            .setTitle("Lorem Ipsum")
-            .setMessage("Lorem Ipsum.")
+            .setTitle("Recipes")
+            .setMessage("Browse from our collection of amazing recipes. Filter your search by name or skill level.")
             .create()
     }
 }

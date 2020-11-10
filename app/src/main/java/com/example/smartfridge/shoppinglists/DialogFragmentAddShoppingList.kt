@@ -16,8 +16,8 @@ class DialogFragmentAddShoppingList : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return AlertDialog.Builder(activity)
-            .setTitle("Lorem Ipsum")
-            .setMessage("Lorem Ipsum.")
+            .setTitle("Add Shopping List")
+            .setMessage("Create a shopping list. Provide a icon and a title for your list. Choose from a selection of icons to help personalize your list.")
             .create()
     }
 }

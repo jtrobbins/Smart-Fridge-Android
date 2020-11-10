@@ -16,8 +16,10 @@ class DialogFragmentShoppingListsActivity : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return AlertDialog.Builder(activity)
-            .setTitle("Lorem Ipsum")
-            .setMessage("Lorem Ipsum.")
+            .setTitle("Shopping Lists")
+            .setMessage("Scroll through your list of shopping lists. Create a new list using the button in the lower " +
+                    "right corner. Tap a list to view its contents or press and hold a list to delete. Delete All lists " +
+                    "using the Delete All button within the menu located in the upper right corner of the screen.")
             .create()
     }
 }
