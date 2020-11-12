@@ -85,7 +85,7 @@ class InventoryActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        val inventoryAdapter = InventoryAdapter(this, inventoryViewModel.getInventory())
+        inventoryAdapter = InventoryAdapter(this, inventoryViewModel.getInventory())
         listViewInventory.adapter = inventoryAdapter
     }
 
@@ -165,7 +165,7 @@ class InventoryActivity : AppCompatActivity() {
                 true
             }
             R.id.delete_all_lists -> {
-                val inventoryAdapter = InventoryAdapter(this, inventoryViewModel.deleteAllitems())
+                inventoryAdapter = InventoryAdapter(this, inventoryViewModel.deleteAllitems())
                 listViewInventory.adapter = inventoryAdapter
                 true
             }
