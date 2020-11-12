@@ -29,6 +29,7 @@ class InventoryActivity : AppCompatActivity() {
     private lateinit var mDialog: DialogFragment
     private lateinit var listViewInventory: ListView
     private lateinit var filterView: SearchView
+    private lateinit var camViewButton: ImageButton
     private lateinit var inventoryViewModel: InventoryViewModel
     private lateinit var inventoryAdapter: ArrayAdapter<InventoryItem>
 
@@ -40,6 +41,7 @@ class InventoryActivity : AppCompatActivity() {
 
         listViewInventory = findViewById(R.id.listViewInventory)
         filterView = findViewById(R.id.filter_inventory)
+        camViewButton = findViewById(R.id.camViewImage)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -50,6 +52,11 @@ class InventoryActivity : AppCompatActivity() {
 
         toolbar.setNavigationOnClickListener {
             finish()
+        }
+
+        camViewButton.setOnClickListener{
+            val camViewIntent = Intent(this, FridgeCamView::class.java)
+            startActivity(camViewIntent)
         }
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)

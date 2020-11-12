@@ -12,6 +12,7 @@
         <activity android:name=".main.NotImplementedActivity" />
         <activity android:name=".inventory.InventoryActivity" />
         <activity android:name=".inventory.AddInventoryItem" />
+        <activity android:name=".inventory.FridgeCamView" />
         <activity android:name=".shoppinglists.ShoppingListsActivity" />
         <activity android:name=".shoppinglists.AddShoppingList" />
         <activity android:name=".shoppinglists.ShoppingListContentsActivity" />
