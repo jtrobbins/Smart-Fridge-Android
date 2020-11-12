@@ -9,7 +9,6 @@ import android.widget.Filter
 import android.widget.Filterable
 import android.widget.TextView
 import com.example.smartfridge.R
-import com.example.smartfridge.recipes.Recipes
 
 class InventoryAdapter (private val context: Activity, private var items: List<InventoryItem>) :
     ArrayAdapter<InventoryItem>(context, R.layout.inventory_item, items), Filterable {

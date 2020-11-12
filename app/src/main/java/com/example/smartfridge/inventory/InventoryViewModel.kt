@@ -1,6 +1,7 @@
 package com.example.smartfridge.inventory
 
 import androidx.lifecycle.ViewModel
+import com.example.smartfridge.shoppinglists.ShoppingList
 import java.util.ArrayList
 
 class InventoryViewModel : ViewModel() {
@@ -13,6 +14,11 @@ class InventoryViewModel : ViewModel() {
 
     fun deleteItem(index: Int) {
         lists.removeAt(index)
+    }
+
+    fun deleteAllitems(): MutableList<InventoryItem> {
+        lists.clear()
+        return lists
     }
 
     fun getInventory(): MutableList<InventoryItem> {

@@ -21,6 +21,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.smartfridge.R
 import com.example.smartfridge.recipes.RecipeAdapter
 import com.example.smartfridge.recipes.Recipes
+import com.example.smartfridge.shoppinglists.ItemAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class InventoryActivity : AppCompatActivity() {
@@ -50,9 +51,6 @@ class InventoryActivity : AppCompatActivity() {
         toolbar.setNavigationOnClickListener {
             finish()
         }
-
-        inventoryAdapter = InventoryAdapter(this, inventoryViewModel.getInventory())
-        listViewInventory.adapter = inventoryAdapter
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
@@ -167,7 +165,8 @@ class InventoryActivity : AppCompatActivity() {
                 true
             }
             R.id.delete_all_lists -> {
-
+                val inventoryAdapter = InventoryAdapter(this, inventoryViewModel.deleteAllitems())
+                listViewInventory.adapter = inventoryAdapter
                 true
             }
             else -> super.onOptionsItemSelected(item)
