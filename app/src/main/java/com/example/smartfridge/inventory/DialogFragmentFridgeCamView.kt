@@ -17,7 +17,7 @@ class DialogFragmentFridgeCamView : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return AlertDialog.Builder(activity)
             .setTitle("FridgeCam View")
-            .setMessage("Lorem Ipsum")
+            .setMessage("View the inside of your fridge.")
             .create()
     }
 }

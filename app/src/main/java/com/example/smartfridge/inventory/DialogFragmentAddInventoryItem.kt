@@ -17,7 +17,7 @@ class DialogFragmentAddInventoryItem : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return AlertDialog.Builder(activity)
             .setTitle("Add Item")
-            .setMessage("Lorem Ipsum")
+            .setMessage("Add an item to your inventory. Provide a name, quantity for your item, and expiration date.")
             .create()
     }
 }
