@@ -3,4 +3,20 @@
     <string name="not_implemented">Not Implemented</string>
     <string name="action_more_information">Help</string>
     <string name="lorem_ipsum">Lorem Ipsum</string>
+
+    <string-array name="foodGroup_array">
+        <item>Grains</item>
+        <item>Vegetables</item>
+        <item>Fruits</item>
+        <item>Dairy</item>
+        <item>Protein</item>
+    </string-array>
+
+    <string-array name="location_array">
+        <item>Freezer</item>
+        <item>Fridge Upper Right Quadrant</item>
+        <item>Fridge Lower Right Quadrant</item>
+        <item>Fridge Upper Left Quadrant</item>
+        <item>Fridge Lower Left Quadrant</item>
+    </string-array>
 </resources>

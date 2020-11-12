@@ -7,9 +7,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
@@ -42,6 +40,22 @@ class AddInventoryItem : AppCompatActivity() {
         var mNameText = findViewById<View>(R.id.inventory_title) as EditText
         var mQuantityText = findViewById<View>(R.id.inventory_quantity) as EditText
         mExpirationDate = findViewById<View>(R.id.inventory_expiration) as EditText
+
+        val foodGroupStaticSpinner = findViewById<View>(R.id.foodGroup_static_spinner) as Spinner
+        val foodGroupStaticAdapter = ArrayAdapter
+            .createFromResource(this, R.array.foodGroup_array,
+                android.R.layout.simple_spinner_item)
+        foodGroupStaticAdapter
+            .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        foodGroupStaticSpinner.adapter = foodGroupStaticAdapter
+
+        val locationStaticSpinner = findViewById<View>(R.id.location_static_spinner) as Spinner
+        val locationStaticAdapter = ArrayAdapter
+            .createFromResource(this, R.array.location_array,
+                android.R.layout.simple_spinner_item)
+        locationStaticAdapter
+            .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        locationStaticSpinner.adapter = locationStaticAdapter
 
         var cal = Calendar.getInstance()
 
