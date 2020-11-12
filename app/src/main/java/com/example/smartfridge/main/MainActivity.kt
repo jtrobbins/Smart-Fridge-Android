@@ -12,6 +12,8 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.smartfridge.*
 import com.example.smartfridge.inventory.InventoryActivity
+import com.example.smartfridge.inventory.InventoryViewModel
+import com.example.smartfridge.inventory.InventoryViewModelFactory
 import com.example.smartfridge.recipes.RecipesActivity
 import com.example.smartfridge.recipes.RecipesViewModel
 import com.example.smartfridge.recipes.RecipesViewModelFactory
@@ -26,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mDialog: DialogFragment
     private lateinit var recipesViewModel: RecipesViewModel
     private lateinit var shoppingListViewModel: ShoppingListViewModel
+    private lateinit var inventoryViewModel: InventoryViewModel
     private lateinit var mToolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +39,8 @@ class MainActivity : AppCompatActivity() {
             ShoppingListViewModel::class.java)
         recipesViewModel = ViewModelProviders.of(this, RecipesViewModelFactory.getInstance()).get(
             RecipesViewModel::class.java)
+        inventoryViewModel = ViewModelProviders.of(this, InventoryViewModelFactory.getInstance()).get(
+            InventoryViewModel::class.java)
 
         mToolbar = findViewById(R.id.toolbar)
         setSupportActionBar(mToolbar)
@@ -98,6 +103,12 @@ class MainActivity : AppCompatActivity() {
         shoppingListViewModel.addItems(1, "Milk", "1", true)
         shoppingListViewModel.addItems(1, "Apples", "8", false)
         shoppingListViewModel.addItems(1, "Turkey", "1", false)
+
+        inventoryViewModel.addItem("Frozen Pizza", "1", "Jan 29, 2021")
+        inventoryViewModel.addItem("Apples", "6", "Nov 10, 2020")
+        inventoryViewModel.addItem("Eggs", "12", "Dec 2, 2020")
+        inventoryViewModel.addItem("Milk", "1", "Nov 23, 2020")
+
 
     }
 
