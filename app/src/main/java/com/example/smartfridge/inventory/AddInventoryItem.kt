@@ -49,7 +49,7 @@ class AddInventoryItem : AppCompatActivity() {
             cal.set(Calendar.MONTH, monthOfYear)
             cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
-            mExpirationDate.setText(SimpleDateFormat("MMM d, yyyy").format(cal.time))
+            mExpirationDate.setText(SimpleDateFormat("MM/dd/yyyy").format(cal.time))
 
         }
 

@@ -159,7 +159,7 @@ class AddShoppingList : AppCompatActivity() {
             val data = Intent()
 
             val cal = Calendar.getInstance()
-            val date = SimpleDateFormat("MMM d, yyyy").format(cal.time)
+            val date = SimpleDateFormat("MM/dd/yyyy").format(cal.time)
 
             data.putExtra("title", mTitleText.text.toString())
             data.putExtra("date", date)

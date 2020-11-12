@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
     private fun generateSample() {
 
         val cal = Calendar.getInstance()
-        val date = SimpleDateFormat("MMM d, yyyy").format(cal.time)
+        val date = SimpleDateFormat("MM/dd/yyyy").format(cal.time)
 
         shoppingListViewModel.addLists("Mary's Birthday!", date, 2)
         shoppingListViewModel.addItems(0, "Cake", "1", false)
@@ -104,10 +104,10 @@ class MainActivity : AppCompatActivity() {
         shoppingListViewModel.addItems(1, "Apples", "8", false)
         shoppingListViewModel.addItems(1, "Turkey", "1", false)
 
-        inventoryViewModel.addItem("Frozen Pizza", "1", "Jan 29, 2021")
-        inventoryViewModel.addItem("Apples", "6", "Nov 10, 2020")
-        inventoryViewModel.addItem("Eggs", "12", "Dec 2, 2020")
-        inventoryViewModel.addItem("Milk", "1", "Nov 23, 2020")
+        inventoryViewModel.addItem("Frozen Pizza", "1", "1/29/2021")
+        inventoryViewModel.addItem("Apples", "6", "11/10/2020")
+        inventoryViewModel.addItem("Eggs", "12", "12/2/2020")
+        inventoryViewModel.addItem("Milk", "1", "11/23/2020")
 
 
     }
