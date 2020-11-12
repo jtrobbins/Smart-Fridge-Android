@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
@@ -79,19 +80,19 @@ class AddInventoryItem : AppCompatActivity() {
 
             if (mNameText.text.toString() == "" || mQuantityText.text.toString() == "" ||
                     mExpirationDate.text.toString() == "") {
+                Toast.makeText(this, "Please fill out all fields.", Toast.LENGTH_LONG).show()
+            } else {
                 val data = Intent()
-                setResult(Activity.RESULT_CANCELED, data)
+
+                data.putExtra("name", mNameText.text.toString())
+                data.putExtra("quantity", mQuantityText.text.toString())
+                data.putExtra("expiration_date", mExpirationDate.text.toString())
+
+                Toast.makeText(this, "Submit successful.", Toast.LENGTH_LONG).show()
+
+                setResult(Activity.RESULT_OK, data)
                 finish()
             }
-
-            val data = Intent()
-
-            data.putExtra("name", mNameText.text.toString())
-            data.putExtra("quantity", mQuantityText.text.toString())
-            data.putExtra("expiration_date", mExpirationDate.text.toString())
-
-            setResult(Activity.RESULT_OK, data)
-            finish()
 
         }
     }
