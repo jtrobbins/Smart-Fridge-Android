@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         shoppingListViewModel = ViewModelProviders.of(this, ShoppingListViewModelFactory.getInstance()).get(
             ShoppingListViewModel::class.java)
-        recipesViewModel =ViewModelProviders.of(this, RecipesViewModelFactory.getInstance()).get(
+        recipesViewModel = ViewModelProviders.of(this, RecipesViewModelFactory.getInstance()).get(
             RecipesViewModel::class.java)
 
         mToolbar = findViewById(R.id.toolbar)
@@ -98,6 +98,7 @@ class MainActivity : AppCompatActivity() {
         shoppingListViewModel.addItems(1, "Milk", "1", true)
         shoppingListViewModel.addItems(1, "Apples", "8", false)
         shoppingListViewModel.addItems(1, "Turkey", "1", false)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

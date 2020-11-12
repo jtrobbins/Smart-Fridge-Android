@@ -1,54 +1,58 @@
 package com.example.smartfridge.inventory
 
-import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.res.Resources
 import android.os.Bundle
-import android.text.TextUtils
-import android.util.Log
+import android.text.InputType
 import android.view.Menu
 import android.view.MenuItem
+import android.view.MotionEvent
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
-import com.example.smartfridge.R
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.lifecycle.ViewModelProviders
-import com.example.smartfridge.main.NotImplementedActivity
-import com.example.smartfridge.recipes.RecipeList
-import java.text.SimpleDateFormat
-import java.util.*
+import com.example.smartfridge.R
+import com.example.smartfridge.recipes.RecipeAdapter
+import com.example.smartfridge.recipes.Recipes
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class InventoryActivity : AppCompatActivity() {
 
     private lateinit var mDialog: DialogFragment
-    private lateinit var listViewLists: ListView
+    private lateinit var listViewInventory: ListView
     private lateinit var filterView: SearchView
-    private lateinit var inventoryListViewModel: InventoryListViewModel
+    private lateinit var inventoryViewModel: InventoryViewModel
+    private lateinit var inventoryAdapter: ArrayAdapter<InventoryItem>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.inventory)
 
-        inventoryListViewModel = ViewModelProviders.of(this, InventoryListViewModelFactory.getInstance()).get(InventoryListViewModel::class.java)
+        inventoryViewModel = ViewModelProviders.of(this, InventoryViewModelFactory.getInstance()).get(InventoryViewModel::class.java)
 
-        listViewLists = findViewById(R.id.listViewTitles)
-
-        filterView = findViewById(R.id.search_inventory)
+        listViewInventory = findViewById(R.id.listViewInventory)
+        filterView = findViewById(R.id.filter_inventory)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.title = "Fridge Inventory"
+        supportActionBar?.title = "Inventory"
         toolbar.setTitleTextAppearance(this, R.style.AppTheme_AppBarOverlayMain)
+
         toolbar.setNavigationOnClickListener {
             finish()
         }
+
+        inventoryAdapter = InventoryAdapter(this, inventoryViewModel.getInventory())
+        listViewInventory.adapter = inventoryAdapter
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
@@ -56,31 +60,73 @@ class InventoryActivity : AppCompatActivity() {
             startActivityForResult(addInventoryItemIntent, ADD_ITEM_REQUEST)
         }
 
-        val fridgeCam = findViewById<ImageView>(R.id.cameraIcon)
-        fridgeCam.setOnClickListener {
-            val fridgeCamIntent = Intent(this, FridgeCamView::class.java)
-            startActivity(fridgeCamIntent)
+        listViewInventory.onItemClickListener = AdapterView.OnItemClickListener { _, _, item, _ ->
+            updateQuantityDialog(item)
         }
 
-        /*inventoryAdapter = InventoryItem(this, recipesViewModel.getLists())
-        filterView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                recipeAdapter.filter.filter(query)
-                return false
-            }
-            override fun onQueryTextChange(newText: String?): Boolean {
-                recipeAdapter.filter.filter(newText)
-                return false
-            }
-        })*/
-
-        listViewLists.onItemLongClickListener = AdapterView.OnItemLongClickListener { _, _, item, _ ->
+        listViewInventory.onItemLongClickListener = AdapterView.OnItemLongClickListener { _, _, item, _ ->
             deleteDialog(item)
             true
         }
 
+        filterView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
-        generateSample()
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                inventoryAdapter.filter.filter(query)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                inventoryAdapter.filter.filter(newText)
+                return false
+            }
+        })
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        val inventoryAdapter = InventoryAdapter(this, inventoryViewModel.getInventory())
+        listViewInventory.adapter = inventoryAdapter
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == ADD_ITEM_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
+            data.getStringExtra("name")?.let { inventoryViewModel.addItem(it,
+                data.getStringExtra("quantity")!!, data.getStringExtra("expiration_date")!!
+            ) }
+        }
+
+    }
+
+    private fun updateQuantityDialog(item: Int) {
+
+        val editTextView = EditText(this)
+        editTextView.setText(inventoryViewModel.getQuantity(item))
+        editTextView.hint = "Enter Quantity"
+        editTextView.inputType = InputType.TYPE_CLASS_NUMBER
+
+        val dialogBuilder = AlertDialog.Builder(this)
+            .setEditText(editTextView)
+            .setPositiveButton("Edit", DialogInterface.OnClickListener {
+                    dialog, _ ->
+                inventoryViewModel.editQuantity(item, editTextView.text.toString())
+                val inventoryAdapter = InventoryAdapter(this, inventoryViewModel.getInventory())
+                listViewInventory.adapter = inventoryAdapter
+                dialog.dismiss()
+            })
+
+            .setNegativeButton("Cancel", DialogInterface.OnClickListener {
+                    dialog, _ -> dialog.cancel()
+            })
+
+        val alert = dialogBuilder.create()
+        alert.setTitle("Edit Quantity")
+        alert.show()
+
     }
 
     private fun deleteDialog(item: Int) {
@@ -90,9 +136,9 @@ class InventoryActivity : AppCompatActivity() {
         dialogBuilder.setMessage("Do you want to delete?")
 
             .setPositiveButton("Delete", DialogInterface.OnClickListener {
-                dialog, _ -> inventoryListViewModel.deleteItem(item)
-                val titleAdapter = TitleList(this, inventoryListViewModel.getItems())
-                listViewLists.adapter = titleAdapter
+                    dialog, _ -> inventoryViewModel.deleteItem(item)
+                val inventoryAdapter = InventoryAdapter(this, inventoryViewModel.getInventory())
+                listViewInventory.adapter = inventoryAdapter
                 dialog.dismiss()
             })
 
@@ -105,30 +151,52 @@ class InventoryActivity : AppCompatActivity() {
         alert.show()
     }
 
-    private fun generateSample() {
-        if (inventoryListViewModel.getItems().size == 0) {
-            val date = "1/5/2020"
-            inventoryListViewModel.addItem("Frozen Pizza", "1 box", date)
-        }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.shopping_lists_menu, menu)
+        return true
     }
 
-    override fun onStart() {
-        super.onStart()
-
-        val titleAdapter = TitleList(this, inventoryListViewModel.getItems())
-
-        listViewLists.adapter = titleAdapter
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == ADD_ITEM_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
-            data.getStringExtra("name")?.let {
-                inventoryListViewModel.addItem(it, data.getStringExtra("quantity")!!, data.getStringExtra("expiration")!!)
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_more_information -> {
+                mDialog =
+                    DialogFragmentInventoryActivity.newInstance()
+                mDialog.show(supportFragmentManager,
+                    TAG
+                )
+                true
             }
-        }
+            R.id.delete_all_lists -> {
 
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    val Float.toPx: Int
+    get() = (this * Resources.getSystem().displayMetrics.density).toInt()
+
+    fun AlertDialog.Builder.setEditText(editText: EditText): AlertDialog.Builder {
+        val container = FrameLayout(context)
+        container.addView(editText)
+        val containerParams = FrameLayout.LayoutParams(
+            FrameLayout.LayoutParams.MATCH_PARENT,
+            FrameLayout.LayoutParams.WRAP_CONTENT
+        )
+        val marginHorizontal = 48F
+        val marginTop = 16F
+        containerParams.topMargin = (marginTop / 2).toPx
+        containerParams.leftMargin = marginHorizontal.toInt()
+        containerParams.rightMargin = marginHorizontal.toInt()
+        container.layoutParams = containerParams
+
+        val superContainer = FrameLayout(context)
+        superContainer.addView(container)
+
+        setView(superContainer)
+
+        return this
     }
 
     companion object {

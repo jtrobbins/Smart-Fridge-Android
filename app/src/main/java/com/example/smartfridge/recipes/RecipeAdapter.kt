@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.*
 import com.example.smartfridge.R
 
-class RecipeList(private val context: Activity, private var recipeLists: List<Recipes>) :
+class RecipeAdapter(private val context: Activity, private var recipeLists: List<Recipes>) :
     ArrayAdapter<Recipes>(context, R.layout.recipe_view_details, recipeLists), Filterable {
 
     private var filteredRecipeList: List<Recipes> = recipeLists

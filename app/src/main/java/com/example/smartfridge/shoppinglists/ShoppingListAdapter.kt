@@ -11,7 +11,7 @@ import com.example.smartfridge.R
 import java.text.SimpleDateFormat
 import java.util.*
 
-class TitleList(private val context: Activity, private var shoppingLists: List<ShoppingList>) :
+class ShoppingListAdapter(private val context: Activity, private var shoppingLists: List<ShoppingList>) :
     ArrayAdapter<ShoppingList>(context, R.layout.shopping_lists_view_names, shoppingLists) {
 
 

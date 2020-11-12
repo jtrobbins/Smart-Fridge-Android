@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.*
 import com.example.smartfridge.R
 
-class ItemList(private val context: Activity, private var items: List<Item>) :
+class ItemAdapter(private val context: Activity, private var items: List<Item>) :
     ArrayAdapter<Item>(context, R.layout.shopping_lists_view_names, items) {
 
     @SuppressLint("ViewHolder")

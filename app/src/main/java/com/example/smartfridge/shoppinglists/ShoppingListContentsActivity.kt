@@ -92,7 +92,7 @@ class ShoppingListContentsActivity : AppCompatActivity() {
             .setPositiveButton("Edit", DialogInterface.OnClickListener {
                     dialog, _ ->
                 shoppingItemViewModel.editQuantity(listId, item, editTextView.text.toString())
-                val titleAdapter = ItemList(this, shoppingItemViewModel.getItems(listId))
+                val titleAdapter = ItemAdapter(this, shoppingItemViewModel.getItems(listId))
                 listViewLists.adapter = titleAdapter
                 dialog.dismiss()
             })
@@ -116,7 +116,7 @@ class ShoppingListContentsActivity : AppCompatActivity() {
 
             .setPositiveButton("Delete", DialogInterface.OnClickListener {
                     dialog, _ -> shoppingItemViewModel.deleteItems(listId, item)
-                val titleAdapter = ItemList(this, shoppingItemViewModel.getItems(listId))
+                val titleAdapter = ItemAdapter(this, shoppingItemViewModel.getItems(listId))
                 listViewLists.adapter = titleAdapter
                 dialog.dismiss()
             })
@@ -158,7 +158,7 @@ class ShoppingListContentsActivity : AppCompatActivity() {
         super.onStart()
 
         val listId = intent.getIntExtra("ID", 0)
-        val itemAdapter = ItemList(this, shoppingItemViewModel.getItems(listId))
+        val itemAdapter = ItemAdapter(this, shoppingItemViewModel.getItems(listId))
         listViewLists.adapter = itemAdapter
     }
 
@@ -190,7 +190,7 @@ class ShoppingListContentsActivity : AppCompatActivity() {
             }
             R.id.delete_all_items -> {
                 val listId = intent.getIntExtra("ID", 0)
-                val itemAdapter = ItemList(this, shoppingItemViewModel.deleteAllItems(listId))
+                val itemAdapter = ItemAdapter(this, shoppingItemViewModel.deleteAllItems(listId))
                 listViewLists.adapter = itemAdapter
                 true
             }

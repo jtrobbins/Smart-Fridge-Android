@@ -54,41 +54,41 @@ class RecipesActivity : AppCompatActivity() {
 
         recipesViewModel.addItem(
             "Broccoli Salad",
-            "Level: Easy",
+            "Difficulty: Easy",
             "Servings: 10",
             "Prep Time: 15 min",
             "Cook Time: 1 hr 15 min"
         )
         recipesViewModel.addItem(
             "Coconut Cake",
-            "Level: Hard",
+            "Difficulty: Hard",
             "Servings: 10 to 12",
             "Prep Time: 35 min",
             "Cook Time: 50 min"
         )
         recipesViewModel.addItem(
             "French Toast",
-            "Level: Easy",
+            "Difficulty: Easy",
             "Servings: 4",
             "Prep Time: 20 min",
             "Cook Time: 10 min"
         )
         recipesViewModel.addItem(
             "Homemade Lasagna",
-            "Level: Intermediate",
+            "Difficulty: Intermediate",
             "Servings: 8",
             "Prep Time: 40 min",
             "Cook Time: 1 hr 30 min"
         )
         recipesViewModel.addItem(
             "Stuffed Bell Peppers",
-            "Level: Easy",
+            "Difficulty: Easy",
             "Servings: 4 to 6",
             "Prep Time: 45 min",
             "Cook Time: 45 min"
         )
 
-        recipeAdapter = RecipeList(this, recipesViewModel.getLists())
+        recipeAdapter = RecipeAdapter(this, recipesViewModel.getLists())
         listViewLists.adapter = recipeAdapter
 
         listViewLists.onItemClickListener = AdapterView.OnItemClickListener { _, view, _, _ ->

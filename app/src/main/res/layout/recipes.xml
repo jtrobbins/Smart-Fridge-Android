@@ -41,7 +41,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         app:iconifiedByDefault="false"
-        app:queryHint="Filter recipes by name or level"
+        app:queryHint="Filter recipes by name or difficulty"
         android:inputType="text"
         android:focusable="false"
         android:completionThreshold="3"

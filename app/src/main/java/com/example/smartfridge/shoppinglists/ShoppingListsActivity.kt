@@ -1,12 +1,9 @@
 package com.example.smartfridge.shoppinglists
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
@@ -17,9 +14,6 @@ import androidx.fragment.app.DialogFragment
 import com.example.smartfridge.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.lifecycle.ViewModelProviders
-import com.example.smartfridge.main.NotImplementedActivity
-import java.text.SimpleDateFormat
-import java.util.*
 
 class ShoppingListsActivity : AppCompatActivity() {
 
@@ -73,7 +67,7 @@ class ShoppingListsActivity : AppCompatActivity() {
 
             .setPositiveButton("Delete", DialogInterface.OnClickListener {
                 dialog, _ -> shoppingListViewModel.deleteLists(item)
-                val titleAdapter = TitleList(this, shoppingListViewModel.getLists())
+                val titleAdapter = ShoppingListAdapter(this, shoppingListViewModel.getLists())
                 listViewLists.adapter = titleAdapter
                 dialog.dismiss()
             })
@@ -90,7 +84,7 @@ class ShoppingListsActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        val titleAdapter = TitleList(this, shoppingListViewModel.getLists())
+        val titleAdapter = ShoppingListAdapter(this, shoppingListViewModel.getLists())
 
         listViewLists.adapter = titleAdapter
     }
@@ -122,7 +116,7 @@ class ShoppingListsActivity : AppCompatActivity() {
                 true
             }
             R.id.delete_all_lists -> {
-                val titleAdapter = TitleList(this,  shoppingListViewModel.deleteAllLists())
+                val titleAdapter = ShoppingListAdapter(this,  shoppingListViewModel.deleteAllLists())
 
                 listViewLists.adapter = titleAdapter
                 true

@@ -1,6 +1,7 @@
-package com.example.smartfridge.shoppinglists
+package com.example.smartfridge.inventory
 
 import android.app.Activity
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -15,13 +16,14 @@ import com.example.smartfridge.R
 import java.text.SimpleDateFormat
 import java.util.*
 
-class AddShoppingItem : AppCompatActivity() {
+class AddInventoryItem : AppCompatActivity() {
 
     private lateinit var mDialog: DialogFragment
+    private lateinit var mExpirationDate: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.add_shopping_item)
+        setContentView(R.layout.add_inventory_item)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -36,8 +38,27 @@ class AddShoppingItem : AppCompatActivity() {
             finish()
         }
 
-        var mNameText = findViewById<View>(R.id.shopping_item_title) as EditText
-        var mQuantityText = findViewById<View>(R.id.shopping_item_quantity) as EditText
+        var mNameText = findViewById<View>(R.id.inventory_title) as EditText
+        var mQuantityText = findViewById<View>(R.id.inventory_quantity) as EditText
+        mExpirationDate = findViewById<View>(R.id.inventory_expiration) as EditText
+
+        var cal = Calendar.getInstance()
+
+        val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            cal.set(Calendar.YEAR, year)
+            cal.set(Calendar.MONTH, monthOfYear)
+            cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+            mExpirationDate.setText(SimpleDateFormat("MMM d, yyyy").format(cal.time))
+
+        }
+
+        mExpirationDate.setOnClickListener {
+            DatePickerDialog(this, dateSetListener,
+                cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)).show()
+        }
 
         val cancelButton = findViewById<View>(R.id.cancelButton) as Button
         cancelButton.setOnClickListener {
@@ -50,12 +71,14 @@ class AddShoppingItem : AppCompatActivity() {
         resetButton.setOnClickListener {
             mNameText.setText("")
             mQuantityText.setText("")
+            mExpirationDate.setText("")
         }
 
         val submitButton = findViewById<View>(R.id.submitButton) as Button
         submitButton.setOnClickListener {
 
-            if (mNameText.text.toString() == "" || mQuantityText.text.toString() == "") {
+            if (mNameText.text.toString() == "" || mQuantityText.text.toString() == "" ||
+                    mExpirationDate.text.toString() == "") {
                 val data = Intent()
                 setResult(Activity.RESULT_CANCELED, data)
                 finish()
@@ -65,12 +88,12 @@ class AddShoppingItem : AppCompatActivity() {
 
             data.putExtra("name", mNameText.text.toString())
             data.putExtra("quantity", mQuantityText.text.toString())
+            data.putExtra("expiration_date", mExpirationDate.text.toString())
 
             setResult(Activity.RESULT_OK, data)
             finish()
 
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -78,12 +101,11 @@ class AddShoppingItem : AppCompatActivity() {
         return true
     }
 
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_more_information -> {
                 mDialog =
-                    DialogFragmentAddShoppingItem.newInstance()
+                    DialogFragmentAddInventoryItem.newInstance()
                 mDialog.show(supportFragmentManager,
                     TAG
                 )
@@ -94,7 +116,6 @@ class AddShoppingItem : AppCompatActivity() {
     }
 
     companion object {
-        private const val TAG = "SmartFridge:AddShoppingItemActivity"
+        private const val TAG = "SmartFridge:AddInventoryItemActivity"
     }
-
 }
