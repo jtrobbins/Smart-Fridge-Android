@@ -10,17 +10,26 @@
         android:id="@+id/textViewItemName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toRightOf="@id/boxView"
+        app:layout_constraintLeft_toRightOf="@+id/spacer"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textStyle="bold"/>
+
+    <View
+        android:id="@+id/spacer"
+        android:layout_height="0dp"
+        android:layout_width="16dp"
+        app:layout_constraintLeft_toRightOf="@+id/boxView"
+        app:layout_constraintRight_toLeftOf="@+id/textViewItemName"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewQuantity"/>
 
     <TextView
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:id="@+id/textViewQuantity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toRightOf="@id/boxView"
+        app:layout_constraintLeft_toRightOf="@+id/spacer"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewItemName"/>
 
@@ -30,7 +39,7 @@
         android:layout_height="0dp"
         android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/textViewItemName"
+        app:layout_constraintRight_toLeftOf="@+id/spacer"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/textViewQuantity"
         android:orientation="horizontal">
