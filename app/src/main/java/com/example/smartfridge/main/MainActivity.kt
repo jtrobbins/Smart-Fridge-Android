@@ -102,11 +102,11 @@ class MainActivity : AppCompatActivity() {
         shoppingListViewModel.addItems(0, "Cake Batter", "1", false)
         shoppingListViewModel.addItems(0, "Party Cups", "20", true)
         shoppingListViewModel.addItems(0, "Paper Plates", "20", true)
-        shoppingListViewModel.addItems(0, "Napkins", "20", false)
-        shoppingListViewModel.addItems(0, "Plastic Silverware", "20", false)
+        shoppingListViewModel.addItems(0, "Napkins", "20", true)
+        shoppingListViewModel.addItems(0, "Plastic Silverware", "20", true)
         shoppingListViewModel.addItems(0, "Butter", "1", true)
 
-        shoppingListViewModel.addLists("Martha's Wedding (Buffet Style)", date, 4)
+        shoppingListViewModel.addLists("Martha's Wedding (Buffet Style)", date, 5)
         shoppingListViewModel.addItems(1, "Silverware", "150", true)
         shoppingListViewModel.addItems(1, "Lobster", "70", false)
         shoppingListViewModel.addItems(1, "Mashed Potatoes", "132", true)
@@ -121,7 +121,7 @@ class MainActivity : AppCompatActivity() {
         shoppingListViewModel.addItems(1, "Ketchup", "20", true)
         shoppingListViewModel.addItems(1, "Ribs", "60", false)
 
-        shoppingListViewModel.addLists("Fannie Mae Catering Event", date, 3)
+        shoppingListViewModel.addLists("Fannie Mae Catering Event", date, 4)
         shoppingListViewModel.addItems(2, "Calamari", "15", false)
         shoppingListViewModel.addItems(2, "Chicken Tenders", "60", true)
         shoppingListViewModel.addItems(2, "Cod", "40", true)
