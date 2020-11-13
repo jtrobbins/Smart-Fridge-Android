@@ -69,6 +69,7 @@ class ShoppingListsActivity : AppCompatActivity() {
                 dialog, _ -> shoppingListViewModel.deleteLists(item)
                 val titleAdapter = ShoppingListAdapter(this, shoppingListViewModel.getLists())
                 listViewLists.adapter = titleAdapter
+                Toast.makeText(this, "List deleted.", Toast.LENGTH_LONG).show()
                 dialog.dismiss()
             })
 
@@ -117,8 +118,8 @@ class ShoppingListsActivity : AppCompatActivity() {
             }
             R.id.delete_all_lists -> {
                 val titleAdapter = ShoppingListAdapter(this,  shoppingListViewModel.deleteAllLists())
-
                 listViewLists.adapter = titleAdapter
+                Toast.makeText(this, "All lists deleted.", Toast.LENGTH_LONG).show()
                 true
             }
             else -> super.onOptionsItemSelected(item)

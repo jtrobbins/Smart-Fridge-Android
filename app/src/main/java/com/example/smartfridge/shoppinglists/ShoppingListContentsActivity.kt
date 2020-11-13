@@ -94,6 +94,7 @@ class ShoppingListContentsActivity : AppCompatActivity() {
                 shoppingItemViewModel.editQuantity(listId, item, editTextView.text.toString())
                 val titleAdapter = ItemAdapter(this, shoppingItemViewModel.getItems(listId))
                 listViewLists.adapter = titleAdapter
+                Toast.makeText(this, "Item quantity updated.", Toast.LENGTH_LONG).show()
                 dialog.dismiss()
             })
 
@@ -118,6 +119,7 @@ class ShoppingListContentsActivity : AppCompatActivity() {
                     dialog, _ -> shoppingItemViewModel.deleteItems(listId, item)
                 val titleAdapter = ItemAdapter(this, shoppingItemViewModel.getItems(listId))
                 listViewLists.adapter = titleAdapter
+                Toast.makeText(this, "Item deleted.", Toast.LENGTH_LONG).show()
                 dialog.dismiss()
             })
 
@@ -142,6 +144,7 @@ class ShoppingListContentsActivity : AppCompatActivity() {
                     dialog, _ ->
                 shoppingItemViewModel.editListName(item, editTextView.text.toString())
                 supportActionBar?.title =  shoppingItemViewModel.getListName(item)
+                Toast.makeText(this, "List title updated.", Toast.LENGTH_LONG).show()
                 dialog.dismiss()
             })
 
@@ -192,6 +195,7 @@ class ShoppingListContentsActivity : AppCompatActivity() {
                 val listId = intent.getIntExtra("ID", 0)
                 val itemAdapter = ItemAdapter(this, shoppingItemViewModel.deleteAllItems(listId))
                 listViewLists.adapter = itemAdapter
+                Toast.makeText(this, "All items deleted.", Toast.LENGTH_LONG).show()
                 true
             }
             R.id.edit_list_name -> {

@@ -144,6 +144,7 @@ class InventoryActivity : AppCompatActivity() {
                     dialog, _ -> inventoryViewModel.deleteItem(item)
                 val inventoryAdapter = InventoryAdapter(this, inventoryViewModel.getInventory())
                 listViewInventory.adapter = inventoryAdapter
+                Toast.makeText(this, "Item deleted.", Toast.LENGTH_LONG).show()
                 dialog.dismiss()
             })
 
@@ -174,6 +175,7 @@ class InventoryActivity : AppCompatActivity() {
             R.id.delete_all_lists -> {
                 inventoryAdapter = InventoryAdapter(this, inventoryViewModel.deleteAllitems())
                 listViewInventory.adapter = inventoryAdapter
+                Toast.makeText(this, "All items deleted.", Toast.LENGTH_LONG).show()
                 true
             }
             else -> super.onOptionsItemSelected(item)
